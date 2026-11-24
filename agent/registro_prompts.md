@@ -41,3 +41,9 @@ Fecha: 2026-11-24
 Contexto entregado: docs/04_diseno_tecnico.md (APROBADO).
 Resultado: tasks/plan_tareas.md (EN REVISIÓN): 16 tareas ordenadas con dependencias, archivos permitidos y límites; 3 preguntas abiertas.
 Ajustes del equipo: se aceptaron QT1, QT2 y QT3. QT2 se concretó: la prueba de rendimiento se omite salvo con RENDIMIENTO=1. Documento APROBADO el 2026-11-24.
+
+## ACT-6 · Derivación de pruebas (sin prompt específico del libro)
+Fecha: 2026-11-24
+Contexto entregado: requisitos, especificación del producto, diseño técnico y plan de tareas (APROBADOS).
+Resultado: tests/plan_pruebas.md (EN REVISIÓN): 81 pruebas (U/A/F/I/M), datos de prueba comunes, cobertura por CA/RN/RNF/CE, asignación a tareas; 3 preguntas abiertas.
+Ajustes del equipo: se aceptaron QPR1 y QPR3. QPR2 se modificó: las pruebas manuales las puede ejecutar cualquier persona, no necesariamente alguien que no implementó la consola. Documento APROBADO el 2026-11-24.

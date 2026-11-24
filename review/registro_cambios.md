@@ -14,3 +14,5 @@
 | 2026-11-24 | ACT-4 | QD1–QD5 resueltas; PEND-002 y PEND-003 cerradas; diseño técnico APROBADO | docs/04_diseno_tecnico.md, agent/AGENT.md, docs/trazabilidad.md, README.md, review/controles_avance.md | |
 | 2026-11-24 | ACT-5 | Borrador del plan de tareas | tasks/plan_tareas.md, docs/trazabilidad.md, README.md | |
 | 2026-11-24 | ACT-5 | QT1–QT3 resueltas; plan de tareas APROBADO | tasks/plan_tareas.md, docs/trazabilidad.md, README.md, review/controles_avance.md | |
+| 2026-11-24 | ACT-6 | Borrador del plan de pruebas | tests/plan_pruebas.md, docs/trazabilidad.md, README.md | |
+| 2026-11-24 | ACT-6 | QPR1–QPR3 resueltas (QPR2 modificada); plan de pruebas APROBADO | tests/plan_pruebas.md, docs/trazabilidad.md, README.md, review/controles_avance.md, review/correcciones_ia.md | |

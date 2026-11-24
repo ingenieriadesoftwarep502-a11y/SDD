@@ -42,3 +42,11 @@ No se avanza a la fase siguiente hasta marcar todos los puntos de la fase actual
 - [x] Dependencias y orden revisados (no hay tareas que usen algo aún no construido)
 - [x] Cada tarea se puede revisar por separado
 - [x] Preguntas QT1–QT3 respondidas
+
+## Actividad 6
+- [x] Cada prueba tiene ID, tipo, requisito, condiciones iniciales, entradas y resultado esperado
+- [x] Todos los criterios de aceptación tienen al menos una prueba (§4.1)
+- [x] Cada regla de negocio tiene un caso válido y uno de fallo (AGENT.md §7)
+- [x] Hay pruebas de fallo para errores de guardado y datos dañados
+- [x] Cada tarea tiene sus pruebas asignadas (§4.3)
+- [x] Preguntas QPR1–QPR3 respondidas
