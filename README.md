@@ -25,6 +25,7 @@ Usa tres dígitos y no reutilices un ID, aunque el elemento se elimine (se marca
 | `RNF-` | Requisito no funcional | `docs/02_requisitos.md` | RNF-001 |
 | `RN-` | Regla de negocio | `docs/02_requisitos.md` | RN-001 |
 | `RES-` | Restricción | `docs/02_requisitos.md` | RES-001 |
+| `PER-` | Permiso | `docs/02_requisitos.md` | PER-001 |
 | `CU-` | Caso de uso | `docs/03_especificacion_producto.md` | CU-001 |
 | `DEC-` | Decisión de diseño | `docs/04_diseno_tecnico.md` | DEC-001 |
 | `TASK-` | Tarea | `tasks/plan_tareas.md` | TASK-001 |
@@ -44,7 +45,7 @@ permite pasar a la fase siguiente.
 |-----------|-----------|--------|
 | 0. Espacio de trabajo | estructura, `agent/AGENT.md` | APROBADO |
 | 1. Intención | `docs/01_intencion.md` | APROBADO |
-| 2. Requisitos | `docs/02_requisitos.md` | Pendiente |
+| 2. Requisitos | `docs/02_requisitos.md` | APROBADO |
 | 3. Especificación de producto | `docs/03_especificacion_producto.md` | Pendiente |
 | 4. Diseño técnico | `docs/04_diseno_tecnico.md` | Pendiente |
 | 5. Tareas | `tasks/plan_tareas.md` | Pendiente |
