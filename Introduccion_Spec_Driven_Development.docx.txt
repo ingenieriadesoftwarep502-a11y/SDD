@@ -1,0 +1,74 @@
+﻿Spec-Driven Development (SDD)
+Fundamentos, el propósito de ingeniería y ciclo de vida
+Síntesis basada exclusivamente en los capítulos 1–3 de Spec-Driven AI Engineering, de Gem Iroko (2026).
+1. ¿Qué es Spec-Driven Development?
+El desarrollo dirigido por especificaciones (Spec-Driven Development, SDD) es un enfoque de ingeniería de software en el que las especificaciones orientan y delimitan la implementación. En el contexto del libro, la IA generativa apoya el trabajo, pero no decide por sí sola qué sistema construir. Antes de generar o modificar código se establecen el comportamiento esperado, las restricciones, los criterios de aceptación y la manera de verificar los resultados.
+Una especificación puede ser breve: lo importante es que describa con claridad qué debe construirse, cómo debe comportarse, cómo se comprobará y qué límites deben respetarse. El código generado es un resultado que debe revisarse y probarse, no una prueba automática de que el problema fue resuelto.
+2. ¿Por qué surge este enfoque?
+Los asistentes y agentes de IA pueden producir código rápidamente, pero una solicitud ambigua los obliga a completar vacíos con supuestos. El resultado puede funcionar técnicamente y, aun así, implementar una funcionalidad equivocada, omitir restricciones o introducir cambios difíciles de controlar. El capítulo 1 contrasta esta práctica con el trabajo guiado por requisitos verificables.
+Codificación improvisada / vibe coding
+	Desarrollo dirigido por especificaciones
+	Se comienza con una instrucción amplia.
+	Se aclaran primero necesidades y límites.
+	La IA infiere decisiones no documentadas.
+	Las decisiones relevantes quedan expresadas en artefactos.
+	Se evalúa si el resultado parece funcionar.
+	Se verifica contra criterios de aceptación y pruebas.
+	Los cambios pueden ampliar el alcance sin control.
+	Las tareas se acotan y revisan de forma incremental.
+	El libro reconoce que la exploración mediante IA es útil para prototipos. La distinción clave es no confundir exploración con implementación controlada.
+3. De la idea al propósito de ingeniería
+El capítulo 2 introduce el propósito de ingeniería (engineering intent): una dirección clara para construir el sistema, situada entre la idea inicial y los requisitos formales. Antes de elegir tecnologías o pantallas, se identifica el problema real, a quién afecta, qué resultado se espera y qué restricciones existen.
+El Engineering Intent Document es el primer artefacto formal y puede ocupar aproximadamente una página. Contiene: nombre del proyecto, problema, usuarios principales, objetivos, capacidades esenciales, exclusiones del alcance, restricciones y criterios de éxito. También conviene identificar riesgos.
+Se distingue la visión —qué mejora se busca— de la implementación —cómo podría lograrse—. Esta separación evita comprometer prematuramente la solución técnica. Una prueba de claridad consiste en preguntar si dos desarrolladores competentes interpretarían la solicitud de maneras sustancialmente distintas.
+4. Ciclo de vida propuesto
+Los capítulos 1 y 3 describen un flujo de trabajo conectado por artefactos y controles de avance (stage gates). Sus etapas principales son:
+1. propósito de ingeniería: Precisar problema, usuarios, objetivos, alcance y restricciones.
+2. Requisitos: Definir comportamientos, reglas, permisos y criterios de aceptación verificables.
+3. Especificación de producto: Describir roles, recorridos de usuario, funcionalidades incluidas y excluidas.
+4. Diseño técnico: Definir arquitectura, datos, interfaces, seguridad, validaciones y manejo de errores.
+5. Planificación de tareas: Dividir el trabajo en unidades pequeñas, ordenadas y revisables, vinculadas a requisitos.
+6. Planificación de pruebas: Establecer antes de implementar las verificaciones de aceptación, unitarias, integración y fallos.
+7. Implementación: Desarrollar una tarea por vez, con especificación, pruebas y límites explícitos.
+8. Revisión y despliegue: Comprobar correspondencia con requisitos, pruebas, diseño y preparación operativa.
+9. Mantenimiento: Actualizar especificaciones cuando cambian comportamiento, decisiones o condiciones del sistema.
+La trazabilidad une necesidad → requisito → especificación → tarea → prueba → código → revisión. Los controles de avance impiden pasar a la siguiente etapa cuando el artefacto anterior sigue siendo ambiguo o incompleto. El proceso no termina con el despliegue: debe evitarse la divergencia entre especificaciones y software (spec drift).
+5. Papel de la IA y del desarrollador
+Los agentes de IA pueden formular preguntas, proponer requisitos, revisar diseños, descomponer tareas, generar pruebas, implementar cambios y analizar fallos. Sin embargo, deben recibir encargos delimitados y contexto pertinente para cada etapa. El desarrollador conserva la responsabilidad sobre decisiones, alcance, corrección, seguridad, revisión y liberación.
+Una instrucción dirigida por especificaciones no pide “construya toda la aplicación”, sino “implemente esta tarea, asociada a este requisito y estos criterios de aceptación; no modifique componentes ajenos y explique los supuestos”.
+6. Ejemplo breve: creación de tareas
+Idea inicial: “Quiero una aplicación para gestionar tareas”.
+propósito: permitir que usuarios autenticados registren y consulten sus tareas personales, con un alcance inicial limitado y reglas claras de propiedad.
+Requisito REQ-001: un usuario autenticado puede crear una tarea con título obligatorio, descripción opcional y fecha de vencimiento opcional; la tarea pertenece exclusivamente a quien la crea.
+Criterios de aceptación: el título no puede estar vacío; la ausencia de fecha no impide crear la tarea; un usuario no puede crear tareas en nombre de otro.
+Tarea TASK-001: implementar el endpoint de creación y su validación, sin añadir notificaciones, tareas de equipo ni archivos adjuntos.
+Pruebas: verificar la creación válida, el rechazo de un título ausente y la protección de la propiedad de la tarea. Solo después se acepta la implementación revisada.
+Este ejemplo condensa el caso recurrente de los capítulos 1–3 y muestra cómo un requisito verificable se convierte en trabajo acotado y comprobable.
+7. Ideas fundamentales
+* Las especificaciones son una referencia compartida para decidir y evaluar, no simplemente documentación adicional.
+* La precisión de los requisitos y sus criterios de aceptación precede a la generación de código.
+* Las tareas pequeñas y los límites explícitos reducen cambios no solicitados y facilitan la revisión.
+* Las pruebas se planifican desde los requisitos, antes de implementar.
+* La trazabilidad y la actualización de especificaciones sostienen el control del sistema durante su evolución.
+Fuente y alcance
+Iroko, G. (2026). Spec-Driven AI Engineering: Build Reliable Software from Requirements to Code with AI Agents, Tests, and Production Workflows. Primera edición. Capítulo 1: Why Spec-Driven AI Engineering Matters; capítulo 2: From Ideas to Engineering Intent; capítulo 3: The Spec-Driven AI Engineering Lifecycle.
+Nota: este documento sintetiza únicamente esos tres capítulos; no incorpora contenidos de los capítulos posteriores ni fuentes externas.
+Otras Fuentes Recomendadas
+Spec-Driven Development vs vibe coding: cuál usar y cuándo [torti code] 
+https://www.youtube.com/watch?v=k83I32V0IFg
+
+
+Spec-Driven Development vs. Waterfall: What's Different for AI Coding? [IBM]
+https://www.youtube.com/watch?v=GpZ5T51jE4U
+
+
+Beginner's Guide to Spec-Driven Development (SDD) With OpenSpec 
+https://www.youtube.com/watch?v=9MImID9o8MQ
+
+
+Spec-driven Development: How AI Changed Everything (And Nothing) by Simon Martinelli @ Spring I/O 26 
+https://www.youtube.com/watch?v=35dH6q18UtI
+
+
+AI Unified process (AIUP) Spec-driven development with AI
+https://unifiedprocess.ai/.

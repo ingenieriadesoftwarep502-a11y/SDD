@@ -1,0 +1,109 @@
+﻿Taller: Desarrollo de software dirigido por especificaciones con asistencia de IA
+Lectura previa: Capítulos 1, 2 y 3 de Spec-Driven AI Engineering, de Gem Iroko (2026).
+1. Objetivo
+Aplicar el ciclo de vida de Spec-Driven Development para desarrollar una aplicación sencilla, utilizando una IA generativa como asistente en la elaboración de especificaciones, planificación de tareas, diseño de pruebas, implementación y revisión. Las especificaciones deben orientar y permitir evaluar el trabajo generado con ayuda de IA.
+2. Problema propuesto: Gestor de préstamos de libros
+Una pequeña biblioteca universitaria administra manualmente el préstamo de libros a estudiantes mediante hojas de cálculo. Esto dificulta conocer qué ejemplares están disponibles, cuáles están prestados y qué préstamos están vencidos. Se desea una aplicación sencilla para administrar el catálogo y registrar préstamos y devoluciones.
+Condiciones iniciales:
+* La aplicación será utilizada por un bibliotecario.
+* Cada libro tendrá identificador, título y autor.
+* Cada préstamo estará asociado con un estudiante y una fecha prevista de devolución.
+* Un ejemplar no podrá prestarse simultáneamente a dos estudiantes.
+* La primera versión será una aplicación de consola.
+* No se requiere autenticación, interfaz gráfica ni integración externa.
+* Se utilizará Python o Java, según las preferencias del equipo.
+Estas condiciones son el punto de partida; los requisitos detallados y las decisiones de diseño se elaborarán durante el ejercicio.
+3. Metodología de trabajo
+En cada fase, ustedes deberán:
+1. Proporcionar a la IA el contexto y los artefactos necesarios.
+2. Utilizar el prompt del libro correspondiente a la actividad.
+3. Examinar críticamente la respuesta de la IA.
+4. Corregir, completar o rechazar propuestas inadecuadas.
+5. Elaborar la versión definitiva del artefacto.
+6. Verificar que el artefacto esté preparado para pasar a la siguiente fase.
+Regla fundamental: no solicitar a la IA que construya toda la aplicación con un único prompt. Cada fase se completa y revisa antes de avanzar.
+4. Actividades
+Actividad 0. Preparación del espacio de trabajo
+Referencia: Capítulo 4, secciones 4.2–4.9.
+Antes de iniciar el desarrollo, preparen un espacio de trabajo que permita organizar los artefactos producidos durante las diferentes fases del ciclo de vida SDD.
+Utilicen el Prompt 4.4: Generate a workspace plan para solicitar a la IA una propuesta de organización del proyecto. Revisen la propuesta y adáptenla a las características del sistema de gestión de préstamos de libros.
+El repositorio deberá contener, como mínimo, las siguientes carpetas:
+* docs/: documentos de intención, requisitos, especificaciones y trazabilidad.
+* tasks/: tareas de implementación.
+* tests/: planes, casos de prueba y pruebas automatizadas.
+* src/: código fuente de la aplicación.
+* review/: resultados de revisiones y registro de cambios.
+* agent/: instrucciones y prompts utilizados con la IA.
+* ops/: documentación relacionada con mantenimiento y operación.
+Adicionalmente:
+1. Inicialicen un repositorio Git para registrar la evolución de los artefactos. No es obligatorio utilizar un repositorio remoto.
+2. Elaboren un archivo agent/AGENT.md que establezca las reglas generales que deberá seguir el asistente de IA durante el proyecto. Utilicen la plantilla presentada en la sección 4.7 y el Prompt 4.3: Improve an agent instruction file para revisar y mejorar su contenido.
+3. Establezcan convenciones sencillas para identificar historias de usuario (HU), casos de uso (CU), tareas (TASK) y pruebas (TEST).
+4. A medida que avancen en el taller, almacenen los artefactos en las carpetas correspondientes y registren los cambios significativos mediante commits de Git.
+Entregable: Repositorio inicial con la estructura de carpetas definida, Git configurado y el archivo AGENT.md revisado.
+Nota: El propósito de esta actividad es establecer una organización que facilite la trazabilidad, proporcione contexto a la IA y permita mantener el control sobre el proceso de desarrollo. Eviten dedicar tiempo a configuraciones o herramientas que no sean necesarias para realizar el ejercicio.
+Actividad 1. De la idea a la intención de ingeniería
+Referencia: capítulo 2, secciones 2.1–2.7. Utilicen los prompts 2.1 (Clarify a raw idea), 2.2 (Improve a problem statement), 2.3 (Translate business need into software direction) y 2.4 (Create an Engineering Intent Document). Identifiquen problema, usuarios, objetivos, restricciones y alcance; no acepten automáticamente características adicionales sugeridas por la IA.
+Entregable: Engineering Intent Document con problema, usuarios, objetivos, capacidades principales, exclusiones, restricciones y criterios de éxito.
+Actividad 2. Especificación de requisitos
+Referencia: capítulo 3, sección 3.2. Utilicen el Prompt 3.1 (Draft requirements from intent) con el documento aprobado de la actividad 1. Complétenlo con instrucciones para que los requisitos funcionales se expresen como historias de usuario, cada una con identificador (HU-001, etc.) y criterios de aceptación verificables.
+Soliciten además requisitos no funcionales, reglas de negocio, permisos y restricciones en declaraciones explícitas, identificadas y verificables cuando corresponda. No fuercen estos elementos al formato de historia de usuario. Revisen claridad, necesidad, consistencia y verificabilidad; distingan necesidades del usuario de decisiones técnicas y eviten duplicaciones.
+Entregable: catálogo de historias de usuario con criterios de aceptación y listado separado de requisitos no funcionales, reglas de negocio y restricciones.
+Actividad 3. Especificación del producto
+Referencia: capítulo 3, sección 3.3. A partir de las historias de usuario aprobadas, utilicen la IA para identificar los principales casos de uso del sistema, en particular consulta, préstamo y devolución de ejemplares. Represéntenlos mediante casos de uso textuales simplificados; no se exige diagrama UML.
+Cada caso de uso deberá contener:
+* Identificador y nombre; actor principal y objetivo.
+* Precondiciones y postcondiciones.
+* Flujo principal de interacción, con pasos numerados.
+* Flujos alternativos y excepciones.
+* Historias de usuario relacionadas.
+Revisen la coherencia con los requisitos, las situaciones excepcionales y el alcance de la primera versión. No presupongan una correspondencia uno a uno entre historias y casos de uso.
+Entregable: especificación del producto con casos de uso textuales, historias relacionadas y funcionalidades excluidas.
+Actividad 4. Diseño técnico
+Referencia: capítulo 3, sección 3.4. Entreguen a la IA requisitos y especificación del producto. Soliciten una propuesta sencilla de componentes o clases, modelo de datos, responsabilidades, reglas de validación y manejo de errores. Evalúen y justifiquen las decisiones elegidas.
+Entregable: especificación técnica con estructura del sistema y decisiones principales de diseño.
+Actividad 5. Planificación de tareas
+Referencia: capítulo 3, sección 3.5. Utilicen el Prompt 3.2 (Turn a spec into tasks) con la especificación técnica aprobada. Descompongan la implementación en tareas pequeñas y ordenadas, con identificador, objetivo, requisito asociado, resultado esperado, criterio de aceptación y límites de modificación. Revisen dependencias y orden.
+Entregable: plan de tareas trazable a los requisitos.
+Actividad 6. Planificación de pruebas
+Referencia: capítulo 3, sección 3.6. Antes de implementar, utilicen la IA para derivar pruebas de historias de usuario, reglas y criterios de aceptación. Consideren pruebas de aceptación, unitarias y de fallos, e integración cuando proceda. Para cada prueba registren requisito asociado, condiciones iniciales, entradas y resultado esperado.
+Entregable: plan de pruebas que permita verificar el cumplimiento de los requisitos.
+Actividad 7. Implementación controlada
+Referencia: capítulo 3, sección 3.7. Utilicen el Prompt 3.3 (Implement one controlled task). Implementen incrementalmente: entreguen a la IA la tarea, requisito, diseño relevante, pruebas previstas y restricciones. Tras cada tarea revisen el código, ejecuten las pruebas, corrijan defectos, verifiquen que no haya funcionalidades ajenas y registren su estado.
+Entregable: código fuente y evidencia de pruebas ejecutadas.
+Actividad 8. Revisión y preparación para la entrega
+Referencia: capítulo 3, secciones 3.8 y 3.10. Utilicen el Prompt 3.4 (Stage gate review) con los artefactos pertinentes. Verifiquen cumplimiento de requisitos, correspondencia con el diseño, resultados de pruebas, cambios no autorizados y riesgos pendientes. Comprueben las afirmaciones de la IA. No se exige despliegue en servidor: basta verificar la ejecución local.
+Entregable: informe breve de revisión y guía de ejecución.
+Actividad 9. Mantenimiento y evolución
+Referencia: capítulo 3, sección 3.9. La biblioteca solicita una nueva regla: «Un estudiante no podrá tener más de tres préstamos activos simultáneamente». Identifiquen con ayuda de IA los artefactos afectados. Actualicen especificaciones antes del código, implementen el cambio y ejecuten pruebas pertinentes y de regresión.
+Entregable: artefactos actualizados, implementación modificada y evidencia de pruebas.
+5. Entrega final
+Cada pareja entregará un repositorio con código, pruebas y artefactos del ciclo de vida, además de un informe breve con:
+7. Artefactos definitivos de las fases.
+8. Tabla de trazabilidad entre historias de usuario/requisitos, casos de uso, tareas, pruebas y componentes.
+9. Interacciones con la IA que produjeron propuestas incorrectas, incompletas o inadecuadas, y cómo se corrigieron.
+10. Reflexión sobre ventajas y dificultades de SDD con asistencia de IA.
+6. Criterios de evaluación
+Criterio
+	Peso
+	Calidad y coherencia de las especificaciones
+	25 %
+	Trazabilidad entre requisitos, tareas, pruebas y código
+	20 %
+	Implementación y cumplimiento de requisitos
+	25 %
+	Calidad y ejecución de las pruebas
+	15 %
+	Uso crítico de la IA y reflexión final
+	15 %
+	Total
+	100 %
+	7. Preguntas para la reflexión final
+11. ¿Qué ventajas encontraron al elaborar especificaciones antes de solicitar código a la IA?
+12. ¿En cuáles fases la IA aportó mayor valor?
+13. ¿Qué errores o decisiones inadecuadas propuso la IA y cómo fueron detectados?
+14. ¿Qué dificultades encontraron para mantener la trazabilidad entre los artefactos?
+15. ¿En qué se diferencia esta experiencia de desarrollar mediante vibe coding?
+Referencia
+Iroko, G. (2026). Spec-Driven AI Engineering: Build Reliable Software from Requirements to Code with AI Agents, Tests, and Production Workflows. Primera edición. Capítulos 1–3.
+Taller SDD · Ingeniería de Software

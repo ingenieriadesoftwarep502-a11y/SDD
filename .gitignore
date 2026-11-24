@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+# Java
+*.class
+target/
+build/
+out/
+# IDE / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
