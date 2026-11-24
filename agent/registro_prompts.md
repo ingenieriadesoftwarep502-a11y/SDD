@@ -11,3 +11,9 @@ Fecha: 2026-11-24
 Entrada: agent/AGENT_v0_original.md
 Resultado: agent/AGENT.md v1.0
 Ajustes del equipo:
+
+## ACT-1 · Prompts 2.1, 2.2, 2.3, 2.4 — Clarificación, problema, dirección e intención
+Fecha: 2026-11-24
+Contexto entregado: idea del proyecto y condiciones iniciales del taller. En 2.3 y 2.4 el equipo respondió "hazlo".
+Resultado: docs/01_intencion.md (EN REVISIÓN). Las preguntas de 2.1 y las respuestas propuestas están en el Anexo A.
+Ajustes del equipo:

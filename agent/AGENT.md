@@ -1,6 +1,6 @@
 # AGENT.md — Instrucciones para el asistente de IA
 
-> Versión: 1.0 · Revisado con el Prompt 4.3 a partir de `agent/AGENT_v0_original.md`.
+> Versión: 1.0 · Estado: APROBADO (2026-11-24) · Revisado con el Prompt 4.3 a partir de `agent/AGENT_v0_original.md`.
 > Este archivo solo lo modifica el equipo. El asistente no puede editarlo.
 
 ## 1. Proyecto
