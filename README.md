@@ -43,7 +43,7 @@ permite pasar a la fase siguiente.
 | Actividad | Artefacto | Estado |
 |-----------|-----------|--------|
 | 0. Espacio de trabajo | estructura, `agent/AGENT.md` | APROBADO |
-| 1. Intención | `docs/01_intencion.md` | EN REVISIÓN |
+| 1. Intención | `docs/01_intencion.md` | APROBADO |
 | 2. Requisitos | `docs/02_requisitos.md` | Pendiente |
 | 3. Especificación de producto | `docs/03_especificacion_producto.md` | Pendiente |
 | 4. Diseño técnico | `docs/04_diseno_tecnico.md` | Pendiente |

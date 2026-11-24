@@ -16,4 +16,4 @@ Ajustes del equipo:
 Fecha: 2026-11-24
 Contexto entregado: idea del proyecto y condiciones iniciales del taller. En 2.3 y 2.4 el equipo respondió "hazlo".
 Resultado: docs/01_intencion.md (EN REVISIÓN). Las preguntas de 2.1 y las respuestas propuestas están en el Anexo A.
-Ajustes del equipo:
+Ajustes del equipo: se confirmaron las 8 respuestas propuestas (P1–P8). P2 deja fuera de la v1 modificar y dar de baja ejemplares. Documento APROBADO el 2026-11-24.
