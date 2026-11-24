@@ -29,3 +29,9 @@ Fecha: 2026-11-24
 Contexto entregado: docs/01_intencion.md y docs/02_requisitos.md (APROBADOS), plantilla de CU del taller.
 Resultado: docs/03_especificacion_producto.md (EN REVISIÓN): 6 CU, matriz HU↔CU, exclusiones, 5 preguntas abiertas.
 Ajustes del equipo: se aceptaron QP1, QP2, QP3 y QP5. Se rechazó QP4 (confirmación antes de guardar préstamo y devolución) porque agregaba comportamiento no definido en los requisitos. Documento APROBADO el 2026-11-24.
+
+## ACT-4 · Propuesta de diseño técnico (sin prompt específico del libro)
+Fecha: 2026-11-24
+Contexto entregado: docs/02_requisitos.md y docs/03_especificacion_producto.md (APROBADOS); el equipo eligió Python.
+Resultado: docs/04_diseno_tecnico.md (EN REVISIÓN): 3 capas, modelo de datos, validaciones, manejo de errores, DEC-001…DEC-012, 5 preguntas abiertas.
+Ajustes del equipo: se aceptaron QD1, QD2, QD4 y QD5. En QD3 el equipo pidió alternativas; se evaluaron cinco (B–E) y se mantuvo `cancelar`, indicado una sola vez por operación en lugar de en cada pregunta. Documento APROBADO el 2026-11-24.

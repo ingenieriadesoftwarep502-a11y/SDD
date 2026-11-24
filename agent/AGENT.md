@@ -91,9 +91,9 @@ como **SUPUESTO** en el reporte en lugar de decidir en silencio.
 
 | ID | Decisión | Estado |
 |----|----------|--------|
-| PEND-001 | Lenguaje: Python o Java | Abierta |
-| PEND-002 | Framework de pruebas (p. ej., `unittest`/`pytest` o JUnit) | Abierta |
-| PEND-003 | Persistencia de la versión 1 (en memoria o archivo local) | Abierta, se decide en la Actividad 4 |
+| PEND-001 | Lenguaje: Python o Java | **Decidida: Python** (2026-11-24, DEC-001) |
+| PEND-002 | Framework de pruebas (p. ej., `unittest`/`pytest` o JUnit) | **Decidida: unittest** (2026-11-24, DEC-008) |
+| PEND-003 | Persistencia de la versión 1 (en memoria o archivo local) | **Decidida: archivo JSON local** (2026-11-24, DEC-004) |
 
 Mientras una decisión siga abierta, no la tomes por tu cuenta.
 
