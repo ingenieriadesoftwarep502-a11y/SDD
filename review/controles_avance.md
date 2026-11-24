@@ -19,3 +19,11 @@ No se avanza a la fase siguiente hasta marcar todos los puntos de la fase actual
 - [x] Sin decisiones técnicas (lenguaje, almacenamiento) en los requisitos
 - [x] Sin duplicaciones ni contradicciones con docs/01_intencion.md
 - [x] Preguntas abiertas Q1–Q5 respondidas
+
+## Actividad 3
+- [x] Cada CU tiene ID, actor, objetivo, pre/postcondiciones, flujo numerado, alternativos y HU relacionadas
+- [x] Todas las HU aprobadas están cubiertas por al menos un CU
+- [x] Cubiertas las situaciones excepcionales (inexistente, ya prestado, no prestado, fecha inválida, error al guardar)
+- [x] Los CU no agregan funciones fuera del alcance de la v1
+- [x] Funcionalidades excluidas listadas
+- [x] Preguntas QP1–QP5 respondidas

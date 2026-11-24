@@ -46,7 +46,7 @@ permite pasar a la fase siguiente.
 | 0. Espacio de trabajo | estructura, `agent/AGENT.md` | APROBADO |
 | 1. Intención | `docs/01_intencion.md` | APROBADO |
 | 2. Requisitos | `docs/02_requisitos.md` | APROBADO |
-| 3. Especificación de producto | `docs/03_especificacion_producto.md` | Pendiente |
+| 3. Especificación de producto | `docs/03_especificacion_producto.md` | APROBADO |
 | 4. Diseño técnico | `docs/04_diseno_tecnico.md` | Pendiente |
 | 5. Tareas | `tasks/plan_tareas.md` | Pendiente |
 | 6. Pruebas | `tests/plan_pruebas.md` | Pendiente |

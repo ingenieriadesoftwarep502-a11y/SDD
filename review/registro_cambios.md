@@ -8,3 +8,5 @@
 | 2026-11-24 | ACT-1 | Decisiones P1–P8 incorporadas; intención APROBADA | docs/01_intencion.md, README.md, review/controles_avance.md | |
 | 2026-11-24 | ACT-2 | Borrador de requisitos | docs/02_requisitos.md, docs/trazabilidad.md, README.md | |
 | 2026-11-24 | ACT-2 | Decisiones Q1–Q5 incorporadas; requisitos APROBADOS | docs/02_requisitos.md, docs/trazabilidad.md, README.md, review/controles_avance.md | |
+| 2026-11-24 | ACT-3 | Borrador de especificación del producto | docs/03_especificacion_producto.md, docs/trazabilidad.md, README.md | |
+| 2026-11-24 | ACT-3 | QP4 rechazada (pasos de confirmación eliminados de CU-003 y CU-004); especificación del producto APROBADA | docs/03_especificacion_producto.md, docs/trazabilidad.md, README.md, review/controles_avance.md, review/correcciones_ia.md | |

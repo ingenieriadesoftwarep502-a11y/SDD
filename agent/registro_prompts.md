@@ -23,3 +23,9 @@ Fecha: 2026-11-24
 Contexto entregado: docs/01_intencion.md (APROBADO). Instrucción adicional del taller: requisitos funcionales como HU con criterios verificables; RNF, RN, permisos y restricciones como declaraciones separadas.
 Resultado: docs/02_requisitos.md (EN REVISIÓN): 8 HU, 9 RNF, 12 RN, 2 PER, 8 RES, 5 preguntas abiertas.
 Ajustes del equipo: se confirmaron las 5 respuestas propuestas (Q1–Q5). Documento APROBADO el 2026-11-24.
+
+## ACT-3 · Identificación de casos de uso (sin prompt específico del libro)
+Fecha: 2026-11-24
+Contexto entregado: docs/01_intencion.md y docs/02_requisitos.md (APROBADOS), plantilla de CU del taller.
+Resultado: docs/03_especificacion_producto.md (EN REVISIÓN): 6 CU, matriz HU↔CU, exclusiones, 5 preguntas abiertas.
+Ajustes del equipo: se aceptaron QP1, QP2, QP3 y QP5. Se rechazó QP4 (confirmación antes de guardar préstamo y devolución) porque agregaba comportamiento no definido en los requisitos. Documento APROBADO el 2026-11-24.
