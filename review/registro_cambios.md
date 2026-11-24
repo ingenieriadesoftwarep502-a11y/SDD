@@ -12,3 +12,5 @@
 | 2026-11-24 | ACT-3 | QP4 rechazada (pasos de confirmación eliminados de CU-003 y CU-004); especificación del producto APROBADA | docs/03_especificacion_producto.md, docs/trazabilidad.md, README.md, review/controles_avance.md, review/correcciones_ia.md | |
 | 2026-11-24 | ACT-4 | Borrador de diseño técnico; PEND-001 decidida (Python) | docs/04_diseno_tecnico.md, docs/trazabilidad.md, agent/AGENT.md, README.md | |
 | 2026-11-24 | ACT-4 | QD1–QD5 resueltas; PEND-002 y PEND-003 cerradas; diseño técnico APROBADO | docs/04_diseno_tecnico.md, agent/AGENT.md, docs/trazabilidad.md, README.md, review/controles_avance.md | |
+| 2026-11-24 | ACT-5 | Borrador del plan de tareas | tasks/plan_tareas.md, docs/trazabilidad.md, README.md | |
+| 2026-11-24 | ACT-5 | QT1–QT3 resueltas; plan de tareas APROBADO | tasks/plan_tareas.md, docs/trazabilidad.md, README.md, review/controles_avance.md | |

@@ -48,7 +48,7 @@ permite pasar a la fase siguiente.
 | 2. Requisitos | `docs/02_requisitos.md` | APROBADO |
 | 3. Especificación de producto | `docs/03_especificacion_producto.md` | APROBADO |
 | 4. Diseño técnico | `docs/04_diseno_tecnico.md` | APROBADO |
-| 5. Tareas | `tasks/plan_tareas.md` | Pendiente |
+| 5. Tareas | `tasks/plan_tareas.md` | APROBADO |
 | 6. Pruebas | `tests/plan_pruebas.md` | Pendiente |
 | 7. Implementación | `src/`, `tests/` | Pendiente |
 | 8. Revisión | `review/revision_final.md`, `ops/guia_ejecucion.md` | Pendiente |

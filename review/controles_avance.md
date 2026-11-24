@@ -35,3 +35,10 @@ No se avanza a la fase siguiente hasta marcar todos los puntos de la fase actual
 - [x] Cada decisión (DEC) tiene alternativas y justificación
 - [x] El diseño no agrega funcionalidades fuera del alcance
 - [x] Preguntas QD1–QD5 respondidas (cierra PEND-002 y PEND-003)
+
+## Actividad 5
+- [x] Cada tarea tiene ID, objetivo, requisito, resultado esperado, criterio de aceptación y límites
+- [x] Todas las HU y los RNF verificables están cubiertos por alguna tarea
+- [x] Dependencias y orden revisados (no hay tareas que usen algo aún no construido)
+- [x] Cada tarea se puede revisar por separado
+- [x] Preguntas QT1–QT3 respondidas

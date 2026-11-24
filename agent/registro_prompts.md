@@ -35,3 +35,9 @@ Fecha: 2026-11-24
 Contexto entregado: docs/02_requisitos.md y docs/03_especificacion_producto.md (APROBADOS); el equipo eligió Python.
 Resultado: docs/04_diseno_tecnico.md (EN REVISIÓN): 3 capas, modelo de datos, validaciones, manejo de errores, DEC-001…DEC-012, 5 preguntas abiertas.
 Ajustes del equipo: se aceptaron QD1, QD2, QD4 y QD5. En QD3 el equipo pidió alternativas; se evaluaron cinco (B–E) y se mantuvo `cancelar`, indicado una sola vez por operación en lugar de en cada pregunta. Documento APROBADO el 2026-11-24.
+
+## ACT-5 · Prompt 3.2 — Turn a spec into tasks
+Fecha: 2026-11-24
+Contexto entregado: docs/04_diseno_tecnico.md (APROBADO).
+Resultado: tasks/plan_tareas.md (EN REVISIÓN): 16 tareas ordenadas con dependencias, archivos permitidos y límites; 3 preguntas abiertas.
+Ajustes del equipo: se aceptaron QT1, QT2 y QT3. QT2 se concretó: la prueba de rendimiento se omite salvo con RENDIMIENTO=1. Documento APROBADO el 2026-11-24.
