@@ -335,3 +335,31 @@ Decisiones del equipo antes de implementar: error del sistema al leer → mensaj
 - Resultado: 78 pasan / 0 fallan
 - Control: en copias temporales, cada caso nuevo falla con su defecto: sin manejo de permisos (TEST-076), sin control de argumentos (TEST-076), sin mensaje de cierre (TEST-077) y sin atrapar Ctrl+C (TEST-077). En este último, la primera versión de la prueba dejaba escapar la interrupción y detenía la suite; se ajustó para que falle con un mensaje claro. El código del proyecto no se modificó.
 - PD-1 queda para TEST-079 (decisión del equipo).
+
+## 2026-11-25 · TASK-016 — Verificación de rendimiento (RNF-006)
+Equipo (QPR3): Intel Core i5-1135G7 @ 2.40 GHz (4 núcleos, 8 hilos), 15.8 GB de RAM, disco SSD; Windows 11, Python 3.14.7.
+Decisión del equipo antes de implementar: el límite de 1 s se exige a las consultas; la carga y el guardado se miden y se registran sin límite.
+Nota: esta tarea no agrega código a la aplicación, así que no tiene una ejecución previa que falle.
+
+**Suite normal (sin RENDIMIENTO)**
+- Comando: `python -m unittest -v`
+- Resultado: 79 pruebas; 78 pasan, 1 omitida (TEST-081), 0 fallan.
+
+**TEST-081 con `RENDIMIENTO=1`**
+- Comando (PowerShell): `$env:RENDIMIENTO="1"; python -m unittest tests.test_rendimiento -v`
+- Datos: 5.000 ejemplares y 20.000 préstamos (1.000 activos, 200 vencidos); archivo de 5.80 MB.
+- Resultado: 1 pasa / 0 fallan (1.4 s en total, incluida la generación de datos).
+
+| Medición | Tiempo | Límite | Resultado |
+|----------|--------|--------|-----------|
+| Carga inicial | 0.273 s | sin límite (se registra) | — |
+| `listar_catalogo` | 0.0013 s | 1 s | Cumple |
+| `listar_disponibles` | 0.0007 s | 1 s | Cumple |
+| `listar_prestados` | 0.0007 s | 1 s | Cumple |
+| `listar_vencidos` | 0.0004 s | 1 s | Cumple |
+| `consultar_ejemplar` | < 0.0001 s | 1 s | Cumple |
+| `registrar_prestamo` con guardado | 0.536 s | sin límite (se registra) | — |
+
+Observaciones:
+- El archivo ocupa 5.80 MB, más que los ~4 MB estimados en DEC-004, por la sangría de 2 espacios decidida en TASK-003. No afecta el cumplimiento.
+- Con el volumen máximo, cada operación que guarda (registrar, prestar, devolver) tarda alrededor de medio segundo, porque reescribe el archivo completo con `fsync` (DEC-005). No hay requisito para este tiempo.
