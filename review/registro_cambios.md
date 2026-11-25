@@ -23,3 +23,4 @@
 | 2026-11-25 | TASK-003 | TEST-008 ampliado: no debe quedar `.tmp` si guardar falla (decisión del equipo) | tests/test_repositorio.py, tests/plan_pruebas.md, tests/evidencias.md | |
 | 2026-11-25 | TASK-004 | `cargar()` valida el archivo y lanza `DatosCorruptos` sin modificarlo | src/biblioteca/repositorio.py, tests/test_repositorio_corrupto.py, tests/evidencias.md, tasks/plan_tareas.md | |
 | 2026-11-25 | TASK-004 | TEST-010 ampliado (control y caso no UTF-8); pendientes PD-1 (tildes) y PD-2 (BOM) registrados en el plan de tareas §6 | tests/test_repositorio_corrupto.py, tests/plan_pruebas.md, tests/evidencias.md, tasks/plan_tareas.md | |
+| 2026-11-25 | TASK-005 | `Biblioteca`: carga inicial, índices y `registrar_ejemplar` con reversión si falla el guardado | src/biblioteca/servicio.py, tests/test_servicio_ejemplares.py, tests/evidencias.md, tasks/plan_tareas.md | |

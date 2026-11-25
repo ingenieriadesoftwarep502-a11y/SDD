@@ -246,7 +246,8 @@ TASK-010 solo depende del modelo y de las excepciones, así que puede hacerse en
 | TASK-002 | Verificada (2026-11-25) |
 | TASK-003 | Verificada (2026-11-25) |
 | TASK-004 | Verificada (2026-11-25) |
-| TASK-005 … TASK-016 | Pendiente |
+| TASK-005 | Verificada (2026-11-25) |
+| TASK-006 … TASK-016 | Pendiente |
 
 ## 5. Preguntas de clarificación (resueltas)
 

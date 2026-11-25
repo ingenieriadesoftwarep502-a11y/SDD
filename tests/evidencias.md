@@ -100,3 +100,19 @@ Decisiones del equipo antes de implementar: un archivo que no es UTF-8 → `Dato
 - Comando: `python -m unittest -v`
 - Resultado: 16 pasan / 0 fallan
 - Control: el contenido del caso Latin-1 produce `UnicodeDecodeError` al decodificarlo como UTF-8 (byte 68), así que el caso prueba la detección de codificación y no la de JSON.
+
+## 2026-11-25 · TASK-005 — Servicio: inicio y registro de ejemplares
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+
+**Ejecución 1: con las pruebas escritas y sin el código (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-016 pasan; 1 error (`No module named 'biblioteca.servicio'`).
+
+**Ejecución 2: después de implementar `servicio.py` (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 24 pasan / 0 fallan
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-016 (regresión) | Pasan |
+| TEST-017 a TEST-024 | Pasan |
