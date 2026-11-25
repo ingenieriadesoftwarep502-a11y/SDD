@@ -24,3 +24,28 @@ Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
 | Prueba | Resultado |
 |--------|-----------|
 | TEST-001 | Pasa |
+
+## 2026-11-25 · TASK-002 — Modelo y excepciones
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+
+**Ejecución 1: con las pruebas escritas y sin el código (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: 1 pasa (TEST-001) / 1 error
+- Salida relevante: `ModuleNotFoundError: No module named 'biblioteca.errores'` → `FAILED (errors=1)`
+
+**Ejecución 2: después de implementar `modelo.py` y `errores.py` (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 4 pasan / 0 fallan
+- Salida relevante: `Ran 4 tests` → `OK`
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 (regresión) | Pasa |
+| TEST-002 | Pasa |
+| TEST-003 | Pasa |
+| TEST-004 | Pasa |
+
+**Ejecución 3: después de quitar de TEST-003 el caso no previsto en el plan (decisión del equipo, opción A)**
+- Comando: `python -m unittest -v`
+- Resultado: 4 pasan / 0 fallan
+- Nota: el comportamiento "préstamo devuelto → 0 días de atraso" se verificará en TEST-048 (TASK-009).

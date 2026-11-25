@@ -243,7 +243,8 @@ TASK-010 solo depende del modelo y de las excepciones, así que puede hacerse en
 | Tarea | Estado |
 |-------|--------|
 | TASK-001 | Verificada (2026-11-25) |
-| TASK-002 … TASK-016 | Pendiente |
+| TASK-002 | Verificada (2026-11-25) |
+| TASK-003 … TASK-016 | Pendiente |
 
 ## 5. Preguntas de clarificación (resueltas)
 
