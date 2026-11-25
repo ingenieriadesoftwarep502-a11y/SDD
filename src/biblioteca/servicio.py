@@ -11,6 +11,7 @@ from biblioteca.errores import (
     EjemplarDuplicado,
     EjemplarNoDisponible,
     EjemplarNoEncontrado,
+    EjemplarNoPrestado,
     FechaPrevistaInvalida,
 )
 from biblioteca.modelo import Ejemplar, Prestamo
@@ -83,6 +84,30 @@ class Biblioteca:
         except BaseException:
             self.prestamos.pop()
             del self.activos[identificador]
+            raise
+        return prestamo
+
+    def registrar_devolucion(self, identificador: str) -> Prestamo:
+        """Cierra el préstamo activo de un ejemplar (HU-005).
+
+        Valida en el orden de CU-004: el ejemplar existe y tiene un préstamo
+        activo (RN-007). La fecha de devolución es la fecha actual. El préstamo
+        se conserva como historial (RN-008). Si no se puede guardar, deshace
+        la devolución.
+        """
+        identificador = _obligatorio("identificador", identificador)
+        if identificador not in self.ejemplares:
+            raise EjemplarNoEncontrado(identificador)
+        if identificador not in self.activos:
+            raise EjemplarNoPrestado(identificador)
+
+        prestamo = self.activos.pop(identificador)
+        prestamo.fecha_devolucion = self._reloj()
+        try:
+            self._guardar()
+        except BaseException:
+            prestamo.fecha_devolucion = None
+            self.activos[identificador] = prestamo
             raise
         return prestamo
 

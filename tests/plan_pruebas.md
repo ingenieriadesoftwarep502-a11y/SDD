@@ -95,7 +95,7 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 |----|------|-----------|-----------------------|----------|--------------------|
 | TEST-033 | A | HU-005.CA1, CE-4 | D1 | Devolver E-02 | P1 con fecha de devolución 24/11/2026; E-02 disponible; `guardar` 1 vez |
 | TEST-034 | F | HU-005.CA2, RN-007 | D1 | Devolver E-01 (disponible) | `EjemplarNoPrestado`; sin cambios |
-| TEST-035 | F | HU-005.CA3 | D1 | Devolver "E-99" | `EjemplarNoEncontrado` |
+| TEST-035 | F | HU-005.CA3 | D1 | Devolver "E-99"; devolver con identificador "" y "   " | `EjemplarNoEncontrado`; con identificador vacío, `CampoVacio("identificador")` *(caso vacío agregado en TASK-007 por decisión del equipo)* |
 | TEST-036 | A | HU-005.CA4 | D1 con P1 previsto el 20/11/2026 (vencido) | Devolver E-02 | Se acepta igual que una devolución a tiempo |
 | TEST-037 | A | HU-005.CA5, RN-008 | D1 | Devolver E-02 | La lista de préstamos sigue teniendo P1 (cerrado); la cantidad total no cambia |
 | TEST-038 | A | RN-002, RN-007 | D1 | Devolver E-02 y luego prestarlo a "2024003" | El nuevo préstamo se acepta |
