@@ -168,8 +168,8 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 | ID | Tipo | Requisito | Condiciones iniciales | Entradas | Resultado esperado |
 |----|------|-----------|-----------------------|----------|--------------------|
 | TEST-075 | I | RNF-001, CE-5 | Carpeta temporal vacía | Ejecución 1: registrar E-01, prestarlo y salir. Ejecución 2: consultar E-01 | En la ejecución 2, E-01 aparece prestado con los datos del estudiante |
-| TEST-076 | I | QP1, CU-006 2b | Archivo con JSON inválido | Iniciar la aplicación con esa ruta | Código de salida 1; mensaje con la ruta; archivo idéntico |
-| TEST-077 | I | RNF-004 | Carpeta temporal | Entrada que termina (EOF) en mitad del menú | Termina sin traza de error |
+| TEST-076 | I | QP1, CU-006 2b | Archivo con JSON inválido; aparte, archivo sin permiso de lectura (simulado) y dos rutas como argumentos | Iniciar la aplicación | JSON inválido: código 1, mensaje con la ruta, archivo idéntico. Sin permiso: código 1, "No se pudo leer el archivo de datos", archivo idéntico. Dos rutas: código 2, mensaje de uso, no se crea ningún archivo *(permisos y argumentos agregados en TASK-015 por decisión del equipo)* |
+| TEST-077 | I | RNF-004 | Carpeta temporal | Entrada que termina (EOF) en mitad del menú; aparte, Ctrl+C (`KeyboardInterrupt`) | Termina sin traza de error, código 0, mensaje "Aplicación cerrada." *(Ctrl+C y mensaje agregados en TASK-015 por decisión del equipo)* |
 | TEST-078 | I | CU-006 2a | Carpeta temporal sin archivo | Iniciar, consultar el catálogo, salir | Mensaje de catálogo vacío; sin error |
 | TEST-079 | M | CE-6, RNF-002, RNF-008 | Aplicación ejecutada desde la raíz, sin datos | Cualquier persona (QPR2) recorre: registrar 2 ejemplares → prestar → consultar → vencidos → devolver → salir | Completa el flujo solo con el menú; todos los textos están en español |
 | TEST-080 | M | RNF-007 | Red desactivada | Repetir TEST-079 | Funciona igual |

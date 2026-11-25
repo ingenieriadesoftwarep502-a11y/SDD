@@ -301,3 +301,37 @@ Decisión del equipo antes de implementar: "Préstamos vencidos" no muestra el a
 - Comando: `python -m unittest -v`
 - Resultado: 74 pasan / 0 fallan
 - Control: en copias temporales, TEST-072 falla si el caso 4a vuelve al menú en lugar de pedir de nuevo el identificador, y TEST-074 falla si "Préstamos vencidos" muestra el aviso de cancelar. El código del proyecto no se modificó.
+
+## 2026-11-25 · TASK-015 — Punto de entrada e inicio/cierre (CU-006)
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisiones del equipo antes de implementar: error del sistema al leer → mensaje y código 1; al cerrar con Ctrl+C o fin de entrada → "Aplicación cerrada."; más de un argumento → uso y código 2; recorrido de humo real en lugar de la ejecución manual (TEST-079/080 quedan para la Actividad 8).
+
+**Ejecución 1: con las pruebas escritas y sin el código (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-074 pasan; 1 error (`No module named 'biblioteca.__main__'`).
+
+**Ejecución 2: después de implementar `__main__.py` (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 78 pasan / 0 fallan
+- Control adicional: ningún otro módulo de `src/` cambió (límite de la tarea).
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-074 (regresión) | Pasan |
+| TEST-075 a TEST-078 | Pasan |
+| TEST-079, TEST-080 (manuales) | Pendientes: Actividad 8 (QPR2) |
+
+**Recorrido de humo real (`python -m biblioteca RUTA` como proceso, entrada por tubería, carpeta temporal)**
+- Flujo CE-6: registrar E-01 y E-02 → prestar E-01 → consultar prestados → vencidos ("No hay préstamos vencidos al 25/11/2026") → devolver E-01 → catálogo (ambos disponibles) → salir. Código de salida 0.
+- Reinicio: E-01 aparece "disponible" con sus datos (persistencia, CE-5). Código 0.
+- Archivo dañado: mensaje con el detalle y la ruta; código 1.
+- Argumentos de más: "Uso: python -m biblioteca [RUTA]"; código 2.
+- Fin de entrada en el menú: "Aplicación cerrada."; código 0.
+- `datos/` del repositorio no se creó ni se modificó.
+- **Hallazgo (PD-1):** con tubería, `sys.stdin` y `sys.stdout` usan `cp1252`. Los textos propios se ven con `�` y los textos con tildes ingresados se guardan dañados (p. ej., "Física" → `'F�\xadsica'`). Registrado en el plan de tareas §6 (PD-1). No se corrigió: queda para TEST-079 según la decisión del equipo.
+
+**Ejecución 3: TEST-076 (permisos, argumentos de más) y TEST-077 (Ctrl+C, mensaje de cierre) ampliados, por decisión del equipo**
+- Comando: `python -m unittest -v`
+- Resultado: 78 pasan / 0 fallan
+- Control: en copias temporales, cada caso nuevo falla con su defecto: sin manejo de permisos (TEST-076), sin control de argumentos (TEST-076), sin mensaje de cierre (TEST-077) y sin atrapar Ctrl+C (TEST-077). En este último, la primera versión de la prueba dejaba escapar la interrupción y detenía la suite; se ajustó para que falle con un mensaje claro. El código del proyecto no se modificó.
+- PD-1 queda para TEST-079 (decisión del equipo).
