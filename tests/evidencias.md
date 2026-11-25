@@ -177,3 +177,22 @@ Datos: D1 cargado con los ejemplares en orden inverso, para que las pruebas de o
 |--------|-----------|
 | TEST-001 a TEST-039 (regresión) | Pasan |
 | TEST-040 a TEST-046 | Pasan |
+
+## 2026-11-25 · TASK-009 — Servicio: préstamos vencidos
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisión del equipo antes de implementar: a igual atraso, se ordena por identificador; caso de empate agregado a TEST-050.
+
+**Ejecución 1: con las pruebas escritas y sin el método (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-046 pasan; TEST-047 a TEST-050 dan error (el método no existe).
+
+**Ejecución 2: después de implementar `listar_vencidos` (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 50 pasan / 0 fallan
+- Control adicional 1: los siete métodos anteriores del servicio son idénticos a los del commit anterior (límite de la tarea).
+- Control adicional 2: en copias temporales, TEST-050 falla sin ordenamiento y falla sin desempate por identificador. La prueba detecta ambos defectos.
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-046 (regresión) | Pasan |
+| TEST-047 a TEST-050 | Pasan |

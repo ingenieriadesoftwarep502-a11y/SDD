@@ -118,7 +118,7 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 | TEST-047 | A | HU-008.CA1, RN-006, CE-2 | Préstamos activos con fecha prevista 20/11, 24/11 y 30/11 | `listar_vencidos()` | Solo el del 20/11 |
 | TEST-048 | A | HU-008.CA2 | D2 (P2 devuelto con atraso) + P1 a tiempo | `listar_vencidos()` | Lista vacía |
 | TEST-049 | A | HU-008.CA4 | D1 | `listar_vencidos()` | `(24/11/2026, [])` |
-| TEST-050 | U | QP3 | Activos con fecha prevista 20/11, 10/11 y 15/11 | `listar_vencidos()` | Orden: 10/11, 15/11, 20/11 (de más a menos atraso) |
+| TEST-050 | U | QP3 | Activos con fecha prevista 20/11, 10/11 y 15/11. Empate: E-03 y E-01 con 15/11, E-02 con 20/11 | `listar_vencidos()` | Orden: 10/11, 15/11, 20/11 (de más a menos atraso). Empate: E-01, E-03, E-02 (a igual atraso, por identificador) *(empate agregado en TASK-009 por decisión del equipo)* |
 
 ### TASK-010 — Consola: base (E/S simulada)
 | ID | Tipo | Requisito | Condiciones iniciales | Entradas | Resultado esperado |

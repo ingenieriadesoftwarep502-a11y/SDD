@@ -131,6 +131,17 @@ class Biblioteca:
         return [(e, self.activos[e.identificador])
                 for e in self._ordenados() if e.identificador in self.activos]
 
+    def listar_vencidos(self) -> tuple[date, list[tuple[Ejemplar, Prestamo]]]:
+        """Préstamos vencidos a la fecha actual, con la fecha usada (HU-008).
+
+        Vencido = activo y fecha actual posterior a la prevista (RN-006).
+        Orden: de más a menos días de atraso; a igual atraso, por identificador.
+        """
+        hoy = self._reloj()
+        vencidos = [p for p in self.activos.values() if p.dias_atraso(hoy) > 0]
+        vencidos.sort(key=lambda p: (-p.dias_atraso(hoy), p.identificador_ejemplar))
+        return hoy, [(self.ejemplares[p.identificador_ejemplar], p) for p in vencidos]
+
     def _ordenados(self) -> list[Ejemplar]:
         """Ejemplares ordenados por identificador, como texto (QP3)."""
         return [self.ejemplares[i] for i in sorted(self.ejemplares)]
