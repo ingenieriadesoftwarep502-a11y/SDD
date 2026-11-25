@@ -245,7 +245,8 @@ TASK-010 solo depende del modelo y de las excepciones, así que puede hacerse en
 | TASK-001 | Verificada (2026-11-25) |
 | TASK-002 | Verificada (2026-11-25) |
 | TASK-003 | Verificada (2026-11-25) |
-| TASK-004 … TASK-016 | Pendiente |
+| TASK-004 | Verificada (2026-11-25) |
+| TASK-005 … TASK-016 | Pendiente |
 
 ## 5. Preguntas de clarificación (resueltas)
 
@@ -254,3 +255,11 @@ TASK-010 solo depende del modelo y de las excepciones, así que puede hacerse en
 | QT1 | ¿Las pruebas automatizadas se escriben dentro de cada tarea (antes del código) o en tareas aparte? | Dentro de cada tarea, primero las pruebas | Aceptada. |
 | QT2 | ¿TASK-016 (rendimiento) se incluye como prueba automatizada o se verifica a mano en la Actividad 8? | Prueba automatizada, ejecutada aparte por ser lenta | Aceptada. |
 | QT3 | ¿Les parece bien la granularidad (16 tareas) o prefieren unir las de consola (011–014) en dos? | Mantener 16: cada una se revisa en pocos minutos | Aceptada. |
+
+## 6. Pendientes detectados (para una tarea posterior)
+Decisiones del equipo: se registran aquí y se asignan a una tarea cuando sea oportuno.
+
+| # | Detectado en | Pendiente | Estado |
+|---|--------------|-----------|--------|
+| PD-1 | TASK-002 | Las tildes pueden verse mal (`�`) en la consola de Windows; revisar al implementar la consola (RNF-008). | Pendiente ("luego se mira") |
+| PD-2 | TASK-004 | Un archivo de datos con marca BOM al inicio (editado con algunos editores) se rechaza como dañado. | Pendiente ("en otra tarea más oportuna") |

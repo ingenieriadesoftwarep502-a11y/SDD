@@ -58,7 +58,7 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 
 | ID | Tipo | Contenido del archivo |
 |----|------|-----------------------|
-| TEST-010 | F | Texto que no es JSON (`{ejemplares: [`) |
+| TEST-010 | F | Control: el contenido base válido (D1) se carga sin error. Texto que no es JSON (`{ejemplares: [`). Contenido D1 codificado en Latin-1 (no UTF-8). *(Control y caso Latin-1 agregados en TASK-004 por decisión del equipo.)* |
 | TEST-011 | F | `"version": 2` |
 | TEST-012 | F | Ejemplar sin `autor`; y otro caso con `titulo` numérico |
 | TEST-013 | F | Fecha prevista `"24/11/2026"` (no ISO) |

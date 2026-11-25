@@ -77,3 +77,26 @@ Decisiones del equipo antes de implementar: cualquier `OSError` al guardar → `
 - Comando: `python -m unittest -v`
 - Resultado: 9 pasan / 0 fallan
 - Control: con el borrado del `.tmp` desactivado (simulado con `mock`, sin modificar el código), TEST-008 falla con `AssertionError: Lists differ: [...biblioteca.json.tmp] != []`. La comprobación detecta el defecto.
+
+## 2026-11-25 · TASK-004 — Repositorio: detección de datos dañados
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisiones del equipo antes de implementar: un archivo que no es UTF-8 → `DatosCorruptos` (los errores del sistema al leer se propagan como `OSError`); los campos extra se ignoran; no se validan textos vacíos ni la coherencia entre fechas.
+
+**Ejecución 1: con las pruebas escritas y sin la validación (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-009 pasan; TEST-010 a TEST-016 fallan (`failures=5, errors=3`).
+
+**Ejecución 2: después de implementar la validación (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 16 pasan / 0 fallan
+- Control adicional: `guardar()` es idéntico al del commit anterior (límite de la tarea).
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-009 (regresión) | Pasan |
+| TEST-010 a TEST-016 | Pasan |
+
+**Ejecución 3: TEST-010 ampliado (control del contenido base y caso no UTF-8), por decisión del equipo**
+- Comando: `python -m unittest -v`
+- Resultado: 16 pasan / 0 fallan
+- Control: el contenido del caso Latin-1 produce `UnicodeDecodeError` al decodificarlo como UTF-8 (byte 68), así que el caso prueba la detección de codificación y no la de JSON.
