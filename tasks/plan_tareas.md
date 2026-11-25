@@ -251,7 +251,8 @@ TASK-010 solo depende del modelo y de las excepciones, así que puede hacerse en
 | TASK-007 | Verificada (2026-11-25) |
 | TASK-008 | Verificada (2026-11-25) |
 | TASK-009 | Verificada (2026-11-25) |
-| TASK-010 … TASK-016 | Pendiente |
+| TASK-010 | Verificada (2026-11-25) |
+| TASK-011 … TASK-016 | Pendiente |
 
 ## 5. Preguntas de clarificación (resueltas)
 
@@ -266,5 +267,5 @@ Decisiones del equipo: se registran aquí y se asignan a una tarea cuando sea op
 
 | # | Detectado en | Pendiente | Estado |
 |---|--------------|-----------|--------|
-| PD-1 | TASK-002 | Las tildes pueden verse mal (`�`) en la consola de Windows; revisar al implementar la consola (RNF-008). | Pendiente ("luego se mira") |
+| PD-1 | TASK-002 | Las tildes pueden verse mal (`�`) en la consola de Windows; revisar al implementar la consola (RNF-008). | Se verificará en TEST-079, en la consola real (decisión del equipo en TASK-010). Si falla, se corrige en una tarea nueva. |
 | PD-2 | TASK-004 | Un archivo de datos con marca BOM al inicio (editado con algunos editores) se rechaza como dañado. | Pendiente ("en otra tarea más oportuna") |

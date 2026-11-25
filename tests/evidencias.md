@@ -196,3 +196,20 @@ Decisión del equipo antes de implementar: a igual atraso, se ordena por identif
 |--------|-----------|
 | TEST-001 a TEST-046 (regresión) | Pasan |
 | TEST-047 a TEST-050 | Pasan |
+
+## 2026-11-25 · TASK-010 — Consola: menú y entrada de datos
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisiones del equipo antes de implementar: menú del 1 al 6 (6 = Salir); Ctrl+C y fin de entrada se manejan en TASK-015; al cancelar se muestra "Operación cancelada."; PD-1 se verifica en TEST-079.
+
+**Ejecución 1: con las pruebas escritas y sin el código (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-050 pasan; 1 error (`No module named 'biblioteca.consola'`).
+
+**Ejecución 2: después de implementar `consola.py` (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 56 pasan / 0 fallan
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-050 (regresión) | Pasan |
+| TEST-051 a TEST-056 | Pasan |
