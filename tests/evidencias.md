@@ -231,3 +231,26 @@ Implementación explicada antes de aplicarla: el identificador repetido se detec
 |--------|-----------|
 | TEST-001 a TEST-056 (regresión) | Pasan |
 | TEST-057 a TEST-060 | Pasan |
+
+## 2026-11-25 · TASK-012 — Consola: consultar ejemplares (CU-002)
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisiones del equipo antes de implementar: submenú 1–4 (opción inválida se vuelve a pedir); cada ejemplar en una línea con separadores "|".
+
+**Ejecución 1: con las pruebas escritas y sin el flujo (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-060 pasan; TEST-061 a TEST-064 fallan (`failures=4`): la opción 2 aún mostraba "no disponible".
+
+**Ejecución 2: después de implementar el flujo (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 64 pasan / 0 fallan
+- Control adicional: `servicio.py` y el flujo de CU-001 sin cambios (límite de la tarea).
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-060 (regresión) | Pasan |
+| TEST-061 a TEST-064 | Pasan |
+
+**Ejecución 3: TEST-061 ampliado (opción inválida del submenú y aviso de cancelar una sola vez), por decisión del equipo**
+- Comando: `python -m unittest -v`
+- Resultado: 64 pasan / 0 fallan
+- Control: en copias temporales, TEST-061 falla si la opción inválida vuelve al menú en lugar de pedirse de nuevo, y falla si el aviso de cancelar se muestra dos veces. El código del proyecto no se modificó.

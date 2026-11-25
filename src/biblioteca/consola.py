@@ -77,7 +77,7 @@ class Consola:
         # Opciones del menú principal (especificación §2). "6" es Salir.
         self._opciones = {
             "1": ("Registrar ejemplar", self._registrar_ejemplar),
-            "2": ("Consultar ejemplares", self._no_disponible),
+            "2": ("Consultar ejemplares", self._consultar_ejemplares),
             "3": ("Registrar préstamo", self._no_disponible),
             "4": ("Registrar devolución", self._no_disponible),
             "5": ("Préstamos vencidos", self._no_disponible),
@@ -151,6 +151,65 @@ class Consola:
         ejemplar = self._biblioteca.registrar_ejemplar(identificador, titulo, autor)
         self._salida(f"Ejemplar {ejemplar.identificador} registrado: «{ejemplar.titulo}», "
                      f"de {ejemplar.autor}.")
+
+    def _consultar_ejemplares(self) -> None:
+        """CU-002: submenú con cuatro consultas; muestra el resultado y vuelve al menú."""
+        consultas = {
+            "1": ("Catálogo completo", self._mostrar_catalogo),
+            "2": ("Por identificador", self._mostrar_ejemplar),
+            "3": ("Disponibles", self._mostrar_disponibles),
+            "4": ("Prestados", self._mostrar_prestados),
+        }
+        self._salida(AVISO_CANCELAR)
+        for numero, (titulo, _) in consultas.items():
+            self._salida(f"{numero}. {titulo}")
+        while True:
+            opcion = self._pedir("Elija una consulta").strip()
+            if opcion in consultas:
+                break
+            self._salida("Consulta no válida. Escriba un número del 1 al 4.")
+        _, mostrar = consultas[opcion]
+        mostrar()
+
+    def _mostrar_catalogo(self) -> None:
+        """HU-002: identificador, título, autor y estado de cada ejemplar."""
+        catalogo = self._biblioteca.listar_catalogo()
+        if not catalogo:
+            self._salida("No hay ejemplares registrados.")
+        for ejemplar, prestamo in catalogo:
+            estado = "disponible" if prestamo is None else "prestado"
+            self._salida(f"{ejemplar.identificador} | {ejemplar.titulo} | {ejemplar.autor} | {estado}")
+
+    def _mostrar_ejemplar(self) -> None:
+        """HU-003: un ejemplar; si está prestado, también estudiante y fecha prevista."""
+        identificador = self.pedir_texto("Identificador")
+        ejemplar, prestamo = self._biblioteca.consultar_ejemplar(identificador)
+        if prestamo is None:
+            estado = "disponible"
+        else:
+            estado = (f"prestado a {prestamo.codigo_estudiante} {prestamo.nombre_estudiante}, "
+                      f"devolución prevista: {formatear_fecha(prestamo.fecha_prevista)}")
+        self._salida(f"{ejemplar.identificador} | {ejemplar.titulo} | {ejemplar.autor} | {estado}")
+
+    def _mostrar_disponibles(self) -> None:
+        """HU-006: identificador, título y autor de los ejemplares disponibles."""
+        disponibles = self._biblioteca.listar_disponibles()
+        if not disponibles:
+            self._salida("No hay ejemplares disponibles.")
+        for ejemplar in disponibles:
+            self._salida(f"{ejemplar.identificador} | {ejemplar.titulo} | {ejemplar.autor}")
+
+    def _mostrar_prestados(self) -> None:
+        """HU-007: identificador, título, estudiante, fecha de préstamo y fecha prevista."""
+        prestados = self._biblioteca.listar_prestados()
+        if not prestados:
+            self._salida("No hay ejemplares prestados.")
+        for ejemplar, prestamo in prestados:
+            self._salida(
+                f"{ejemplar.identificador} | {ejemplar.titulo} | "
+                f"{prestamo.codigo_estudiante} {prestamo.nombre_estudiante} | "
+                f"prestado el {formatear_fecha(prestamo.fecha_prestamo)} | "
+                f"devolución prevista: {formatear_fecha(prestamo.fecha_prevista)}")
 
     def _no_disponible(self) -> None:
         self._salida("Opción no disponible todavía.")

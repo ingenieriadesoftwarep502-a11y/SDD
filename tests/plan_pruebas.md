@@ -141,7 +141,7 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 ### TASK-012 — Consola: CU-002
 | ID | Tipo | Requisito | Condiciones iniciales | Entradas | Resultado esperado |
 |----|------|-----------|-----------------------|----------|--------------------|
-| TEST-061 | A | HU-002.CA1, CA2 | D1; luego D0 | Consulta de catálogo | Con D1: los 3 identificadores, títulos, autores y "disponible"/"prestado". Con D0: mensaje de catálogo vacío |
+| TEST-061 | A | HU-002.CA1, CA2 | D1; luego D0 | Consulta de catálogo; aparte, opción "9" en el submenú y luego catálogo | Con D1: los 3 identificadores, títulos, autores y "disponible"/"prestado". Con D0: mensaje de catálogo vacío. Opción inválida: se informa una vez y se vuelve a pedir; el aviso de "cancelar" aparece una sola vez *(agregado en TASK-012 por decisión del equipo)* |
 | TEST-062 | A | HU-003.CA1, CA2 | D1 | Consultar "E-01" y "E-02" | E-01 "disponible"; E-02 "prestado", "2024001", "Ana Pérez", "30/11/2026" |
 | TEST-063 | F | HU-003.CA3 | D1 | Consultar "E-99" | Mensaje "no está registrado" |
 | TEST-064 | A | HU-006.CA1–2, HU-007.CA1–2 | D1; luego D0 | Consultas de disponibles y prestados | D1: disponibles E-01 y E-03; prestados E-02 con estudiante y fechas DD/MM/AAAA. D0: mensajes de lista vacía |
