@@ -50,7 +50,7 @@ Estado inicial de todas las pruebas: **Pendiente**. El resultado de cada ejecuci
 | TEST-005 | U | RNF-001, RN-008 | Carpeta temporal | Guardar D2 con un estudiante "Ñuñez Álvarez" y volver a cargar | Los datos cargados son iguales a los guardados, incluido el préstamo devuelto |
 | TEST-006 | U | CU-006 2a | Carpeta temporal sin archivo | `cargar()` | Listas vacías; no se crea ningún archivo |
 | TEST-007 | U | DEC-005, DEC-012 | Ruta con subcarpeta inexistente | `guardar(D1)` | Se crea la carpeta y el archivo; no queda ningún `.tmp` |
-| TEST-008 | F | RNF-005, DEC-005 | Archivo con D1 | `guardar(D2)` con `os.replace` simulado que falla | Lanza `ErrorPersistencia`; el archivo contiene exactamente D1 |
+| TEST-008 | F | RNF-005, DEC-005 | Archivo con D1 | `guardar(D2)` con `os.replace` simulado que falla | Lanza `ErrorPersistencia`; el archivo contiene exactamente D1; no queda ningún `.tmp` (agregado en TASK-003 por decisión del equipo) |
 | TEST-009 | U | DEC-007, §4.3 | Carpeta temporal | `guardar(D1)` y leer el texto del archivo | `"version": 1`; fechas `"2026-11-20"`; "Pérez" escrito con tilde (no `é`) |
 
 ### TASK-004 — Repositorio: datos dañados

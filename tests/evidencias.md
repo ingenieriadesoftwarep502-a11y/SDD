@@ -49,3 +49,31 @@ Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
 - Comando: `python -m unittest -v`
 - Resultado: 4 pasan / 0 fallan
 - Nota: el comportamiento "préstamo devuelto → 0 días de atraso" se verificará en TEST-048 (TASK-009).
+
+## 2026-11-25 · TASK-003 — Repositorio: cargar y guardar
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisiones del equipo antes de implementar: cualquier `OSError` al guardar → `ErrorPersistencia`; borrar el `.tmp` si falla; JSON con sangría de 2 espacios; en TEST-005 se agrega un préstamo P3 activo de E-03 a "Ñuñez Álvarez".
+
+**Ejecución 1: con las pruebas escritas y sin el código (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: 4 pasan (regresión) / 1 error
+- Salida relevante: `ModuleNotFoundError: No module named 'biblioteca.repositorio'` → `FAILED (errors=1)`
+
+**Ejecución 2: después de implementar `repositorio.py` (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 9 pasan / 0 fallan
+- Salida relevante: `Ran 9 tests` → `OK`
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-004 (regresión) | Pasan |
+| TEST-005 | Pasa |
+| TEST-006 | Pasa |
+| TEST-007 | Pasa |
+| TEST-008 | Pasa |
+| TEST-009 | Pasa |
+
+**Ejecución 3: TEST-008 ampliado (no queda `.tmp` si guardar falla), por decisión del equipo**
+- Comando: `python -m unittest -v`
+- Resultado: 9 pasan / 0 fallan
+- Control: con el borrado del `.tmp` desactivado (simulado con `mock`, sin modificar el código), TEST-008 falla con `AssertionError: Lists differ: [...biblioteca.json.tmp] != []`. La comprobación detecta el defecto.
