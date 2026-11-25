@@ -17,7 +17,7 @@ Fuentes: `docs/02_requisitos.md`, `docs/03_especificacion_producto.md`, `docs/04
 - Las pruebas de servicio usan un **repositorio falso en memoria**, que cuenta las llamadas a `guardar()` y puede simular una falla. Las de repositorio e integración usan `tempfile.TemporaryDirectory()`. Ninguna prueba toca `datos/`.
 - Las pruebas de consola verifican **palabras clave** del mensaje (por ejemplo "ya está prestado", "DD/MM/AAAA"), no el texto exacto (QPR1).
 - Toda prueba de tipo F comprueba que el estado (ejemplares, préstamos y llamadas a `guardar`) es igual antes y después.
-- Ejecución: `python -m unittest discover -s tests -v` desde la raíz. La prueba de rendimiento solo corre con `RENDIMIENTO=1`.
+- Ejecución: `python -m unittest -v` desde la raíz. La prueba de rendimiento solo corre con `RENDIMIENTO=1`.
 
 ## 2. Datos de prueba comunes
 

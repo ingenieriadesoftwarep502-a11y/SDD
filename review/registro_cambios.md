@@ -16,3 +16,4 @@
 | 2026-11-24 | ACT-5 | QT1–QT3 resueltas; plan de tareas APROBADO | tasks/plan_tareas.md, docs/trazabilidad.md, README.md, review/controles_avance.md | |
 | 2026-11-24 | ACT-6 | Borrador del plan de pruebas | tests/plan_pruebas.md, docs/trazabilidad.md, README.md | |
 | 2026-11-24 | ACT-6 | QPR1–QPR3 resueltas (QPR2 modificada); plan de pruebas APROBADO | tests/plan_pruebas.md, docs/trazabilidad.md, README.md, review/controles_avance.md, review/correcciones_ia.md | |
+| 2026-11-24 | TASK-001 | Paquete `biblioteca` y entorno de pruebas; comando de pruebas corregido a `python -m unittest -v`; regla de cierre obligatorio por tarea; `src/.gitkeep` eliminado | src/biblioteca/__init__.py, tests/__init__.py, tests/test_estructura.py, .gitignore, src/.gitkeep (eliminado), docs/04_diseno_tecnico.md, tasks/plan_tareas.md, tests/plan_pruebas.md, tests/evidencias.md, review/correcciones_ia.md | |

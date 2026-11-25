@@ -36,7 +36,7 @@ TASK-010 solo depende del modelo y de las excepciones, así que puede hacerse en
 - **Objetivo:** crear el paquete vacío y dejar funcionando el comando de pruebas.
 - **Requisito asociado:** DEC-001, DEC-008, DEC-012
 - **Resultado esperado:** `src/biblioteca/__init__.py`; `tests/__init__.py`, que agrega `src/` a `sys.path`; `tests/test_estructura.py`, con una prueba que importa el paquete; `datos/` agregado a `.gitignore`.
-- **Criterio de aceptación:** `python -m unittest discover -s tests -v` se ejecuta desde la raíz y muestra 1 prueba OK.
+- **Criterio de aceptación:** `python -m unittest -v` se ejecuta desde la raíz y muestra 1 prueba OK.
 - **Archivos permitidos:** los cuatro mencionados.
 - **Fuera de límites:** no crear todavía `modelo.py`, `servicio.py`, `repositorio.py` ni `consola.py`.
 
@@ -231,12 +231,19 @@ TASK-010 solo depende del modelo y de las excepciones, así que puede hacerse en
 2. En cada tarea, primero se escriben las pruebas asociadas y después el código.
 3. Una tarea pasa a **Hecha** cuando cumple su criterio de aceptación, y a **Verificada** cuando el equipo revisó el código y se ejecutó toda la suite (regresión).
 4. Si una tarea necesita tocar un archivo fuera de "Archivos permitidos", se detiene y se reporta.
+5. **Cierre obligatorio de cada tarea** (decidido por el equipo en TASK-001). Antes de pedir la aprobación, en la misma solicitud:
+   - registrar en `tests/evidencias.md` los comandos ejecutados y su resultado real (incluida la ejecución que falla antes del código);
+   - actualizar el estado de la tarea en la sección 4;
+   - agregar la fila de la tarea en `review/registro_cambios.md`;
+   - eliminar los archivos que la tarea deja sin uso (p. ej., marcadores `.gitkeep`) y reportarlo.
+   Estos archivos de cierre se pueden modificar aunque no figuren en "Archivos permitidos". **Una tarea sin este cierre no se puede aprobar.**
 
 ## 4. Estado
 
 | Tarea | Estado |
 |-------|--------|
-| TASK-001 … TASK-016 | Pendiente |
+| TASK-001 | Verificada (2026-11-25) |
+| TASK-002 … TASK-016 | Pendiente |
 
 ## 5. Preguntas de clarificación (resueltas)
 
