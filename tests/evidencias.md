@@ -278,3 +278,26 @@ Implementación explicada antes de aplicarla: el ejemplar se verifica con `consu
 - Comando: `python -m unittest -v`
 - Resultado: 70 pasan / 0 fallan
 - Control: en una copia temporal donde el caso 4a vuelve al menú en lugar de pedir de nuevo el identificador, TEST-066 falla. El código del proyecto no se modificó.
+
+## 2026-11-25 · TASK-014 — Consola: devolución y vencidos (CU-004, CU-005)
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisión del equipo antes de implementar: "Préstamos vencidos" no muestra el aviso de cancelar (no pide datos).
+
+**Ejecución 1: con las pruebas escritas y sin los flujos (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-070 pasan; TEST-071 a TEST-074 fallan (`failures=4`): las opciones 4 y 5 aún mostraban "no disponible".
+
+**Ejecución 2: después de implementar los flujos (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 74 pasan / 0 fallan
+- Control adicional: `servicio.py` y los demás métodos de la consola sin cambios (límite de la tarea). Se eliminó el método provisional `_no_disponible`, que quedó sin uso.
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-070 (regresión) | Pasan |
+| TEST-071 a TEST-074 | Pasan |
+
+**Ejecución 3: TEST-072 (caso 4a) y TEST-074 (sin aviso de cancelar) ampliados, por decisión del equipo**
+- Comando: `python -m unittest -v`
+- Resultado: 74 pasan / 0 fallan
+- Control: en copias temporales, TEST-072 falla si el caso 4a vuelve al menú en lugar de pedir de nuevo el identificador, y TEST-074 falla si "Préstamos vencidos" muestra el aviso de cancelar. El código del proyecto no se modificó.

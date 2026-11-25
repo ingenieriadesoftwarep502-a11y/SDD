@@ -79,8 +79,8 @@ class Consola:
             "1": ("Registrar ejemplar", self._registrar_ejemplar),
             "2": ("Consultar ejemplares", self._consultar_ejemplares),
             "3": ("Registrar préstamo", self._registrar_prestamo),
-            "4": ("Registrar devolución", self._no_disponible),
-            "5": ("Préstamos vencidos", self._no_disponible),
+            "4": ("Registrar devolución", self._registrar_devolucion),
+            "5": ("Préstamos vencidos", self._mostrar_vencidos),
         }
 
     def ejecutar(self) -> None:
@@ -244,5 +244,35 @@ class Consola:
             f"{prestamo.codigo_estudiante} {prestamo.nombre_estudiante}, "
             f"devolución prevista: {formatear_fecha(prestamo.fecha_prevista)}.")
 
-    def _no_disponible(self) -> None:
-        self._salida("Opción no disponible todavía.")
+    def _registrar_devolucion(self) -> None:
+        """CU-004: identificador → cierra el préstamo y confirma. Sin confirmación previa."""
+        self._salida(AVISO_CANCELAR)
+        while True:
+            identificador = self.pedir_texto("Identificador del ejemplar")
+            try:
+                prestamo = self._biblioteca.registrar_devolucion(identificador)
+                break
+            except (EjemplarNoEncontrado, EjemplarNoPrestado) as error:  # CU-004 4a, 4b
+                self._salida(mensaje_error(error))
+        self._salida(
+            f"Devolución registrada: {prestamo.identificador_ejemplar}, prestado a "
+            f"{prestamo.codigo_estudiante} {prestamo.nombre_estudiante}, "
+            f"devuelto el {formatear_fecha(prestamo.fecha_devolucion)}.")
+
+    def _mostrar_vencidos(self) -> None:
+        """CU-005: fecha usada y préstamos vencidos, de más a menos atraso (HU-008).
+
+        No pide datos, así que no muestra el aviso de "cancelar" (decisión del equipo).
+        """
+        hoy, vencidos = self._biblioteca.listar_vencidos()
+        if not vencidos:
+            self._salida(f"No hay préstamos vencidos al {formatear_fecha(hoy)}.")
+            return
+        self._salida(f"Préstamos vencidos al {formatear_fecha(hoy)}:")
+        for ejemplar, prestamo in vencidos:
+            dias = prestamo.dias_atraso(hoy)
+            self._salida(
+                f"{ejemplar.identificador} | {ejemplar.titulo} | "
+                f"{prestamo.codigo_estudiante} {prestamo.nombre_estudiante} | "
+                f"devolución prevista: {formatear_fecha(prestamo.fecha_prevista)} | "
+                f"{dias} {'día' if dias == 1 else 'días'} de atraso")

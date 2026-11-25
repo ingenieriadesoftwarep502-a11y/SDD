@@ -160,9 +160,9 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 | ID | Tipo | Requisito | Condiciones iniciales | Entradas | Resultado esperado |
 |----|------|-----------|-----------------------|----------|--------------------|
 | TEST-071 | A | CU-004, HU-005.CA1 | D1 | Devolver "E-02" | Confirmación; E-02 disponible |
-| TEST-072 | F | CU-004 4b, HU-005.CA2 | D1 | Devolver "E-01" | Mensaje "no tiene préstamo activo" |
+| TEST-072 | F | CU-004 4a, 4b, HU-005.CA2 | D1 | Devolver "E-01"; aparte, "E-99" y luego "E-02" | Mensaje "no tiene préstamo activo". Con E-99: mensaje "no está registrado", se vuelve a pedir y se devuelve E-02 *(caso 4a agregado en TASK-014 por decisión del equipo)* |
 | TEST-073 | A | CU-005, HU-008.CA3 | P1 con fecha prevista 20/11/2026 | Opción vencidos | Muestra "24/11/2026" (fecha usada), "E-02", "Cálculo I", "2024001", "Ana Pérez", "20/11/2026" y "4" días |
-| TEST-074 | A | HU-008.CA4 | D1 | Opción vencidos | Mensaje "no hay préstamos vencidos" y la fecha usada |
+| TEST-074 | A | HU-008.CA4 | D1 | Opción vencidos | Mensaje "no hay préstamos vencidos" y la fecha usada; no se muestra el aviso de cancelar *(agregado en TASK-014 por decisión del equipo)* |
 
 ### TASK-015 — Integración e inicio/cierre
 | ID | Tipo | Requisito | Condiciones iniciales | Entradas | Resultado esperado |

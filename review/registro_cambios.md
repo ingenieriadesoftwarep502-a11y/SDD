@@ -35,3 +35,5 @@
 | 2026-11-25 | TASK-012 | TEST-061 ampliado: opción inválida del submenú y aviso de cancelar una sola vez (decisión del equipo) | tests/test_consola_cu002.py, tests/plan_pruebas.md, tests/evidencias.md | |
 | 2026-11-25 | TASK-013 | Flujo de consola CU-003 (registrar préstamo): verificación del ejemplar, fecha inválida o anterior se vuelve a pedir, sin confirmación | src/biblioteca/consola.py, tests/test_consola_cu003.py, tests/evidencias.md, tasks/plan_tareas.md | |
 | 2026-11-25 | TASK-013 | TEST-066 ampliado con el caso 4a (ejemplar inexistente) por decisión del equipo | tests/test_consola_cu003.py, tests/plan_pruebas.md, tests/evidencias.md | |
+| 2026-11-25 | TASK-014 | Flujos de consola CU-004 (devolución) y CU-005 (vencidos); se elimina el método provisional `_no_disponible` | src/biblioteca/consola.py, tests/test_consola_cu004_cu005.py, tests/evidencias.md, tasks/plan_tareas.md | |
+| 2026-11-25 | TASK-014 | TEST-072 (caso 4a) y TEST-074 (sin aviso de cancelar) ampliados por decisión del equipo | tests/test_consola_cu004_cu005.py, tests/plan_pruebas.md, tests/evidencias.md | |
