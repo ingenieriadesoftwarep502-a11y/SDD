@@ -22,6 +22,7 @@ from biblioteca.errores import (
 
 PALABRA_CANCELAR = "cancelar"
 FORMATO_FECHA = "%d/%m/%Y"  # DD/MM/AAAA (RNF-009)
+AVISO_CANCELAR = "Escriba cancelar en cualquier momento para volver al menú."  # DEC-011
 
 # Nombres de los campos tal como se muestran al bibliotecario.
 _NOMBRES_DE_CAMPO = {
@@ -75,7 +76,7 @@ class Consola:
         self._salida = salida
         # Opciones del menú principal (especificación §2). "6" es Salir.
         self._opciones = {
-            "1": ("Registrar ejemplar", self._no_disponible),
+            "1": ("Registrar ejemplar", self._registrar_ejemplar),
             "2": ("Consultar ejemplares", self._no_disponible),
             "3": ("Registrar préstamo", self._no_disponible),
             "4": ("Registrar devolución", self._no_disponible),
@@ -134,6 +135,22 @@ class Consola:
         for numero, (titulo, _) in self._opciones.items():
             self._salida(f"{numero}. {titulo}")
         self._salida("6. Salir")
+
+    def _registrar_ejemplar(self) -> None:
+        """CU-001: identificador → título → autor; registra y confirma."""
+        self._salida(AVISO_CANCELAR)
+        while True:
+            identificador = self.pedir_texto("Identificador")
+            try:
+                self._biblioteca.consultar_ejemplar(identificador)
+            except EjemplarNoEncontrado:
+                break
+            self._salida(f"Identificador ya registrado: {identificador}.")  # CU-001 4b
+        titulo = self.pedir_texto("Título")
+        autor = self.pedir_texto("Autor")
+        ejemplar = self._biblioteca.registrar_ejemplar(identificador, titulo, autor)
+        self._salida(f"Ejemplar {ejemplar.identificador} registrado: «{ejemplar.titulo}», "
+                     f"de {ejemplar.autor}.")
 
     def _no_disponible(self) -> None:
         self._salida("Opción no disponible todavía.")

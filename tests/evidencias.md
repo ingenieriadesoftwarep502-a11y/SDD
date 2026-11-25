@@ -213,3 +213,21 @@ Decisiones del equipo antes de implementar: menú del 1 al 6 (6 = Salir); Ctrl+C
 |--------|-----------|
 | TEST-001 a TEST-050 (regresión) | Pasan |
 | TEST-051 a TEST-056 | Pasan |
+
+## 2026-11-25 · TASK-011 — Consola: registrar ejemplar (CU-001)
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Implementación explicada antes de aplicarla: el identificador repetido se detecta con `consultar_ejemplar` (método existente) para volver a pedirlo antes del título (CU-001 4b), sin modificar `servicio.py`.
+
+**Ejecución 1: con las pruebas escritas y sin el flujo (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-056 pasan; TEST-057 a TEST-060 fallan (`failures=3, errors=1`): la opción 1 aún mostraba "no disponible".
+
+**Ejecución 2: después de implementar el flujo (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 60 pasan / 0 fallan
+- Control adicional: `servicio.py` sin cambios (límite de la tarea).
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-056 (regresión) | Pasan |
+| TEST-057 a TEST-060 | Pasan |
