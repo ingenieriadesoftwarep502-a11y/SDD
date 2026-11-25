@@ -6,8 +6,14 @@ from __future__ import annotations
 
 from datetime import date
 
-from biblioteca.errores import CampoVacio, EjemplarDuplicado
-from biblioteca.modelo import Ejemplar
+from biblioteca.errores import (
+    CampoVacio,
+    EjemplarDuplicado,
+    EjemplarNoDisponible,
+    EjemplarNoEncontrado,
+    FechaPrevistaInvalida,
+)
+from biblioteca.modelo import Ejemplar, Prestamo
 
 
 class Biblioteca:
@@ -48,6 +54,37 @@ class Biblioteca:
             del self.ejemplares[identificador]
             raise
         return ejemplar
+
+    def registrar_prestamo(self, identificador: str, codigo: str, nombre: str,
+                           fecha_prevista: date) -> Prestamo:
+        """Presta un ejemplar disponible a un estudiante (HU-004).
+
+        Valida en el orden de CU-003: ejemplar (existe y está disponible,
+        RN-002, RN-003), código, nombre y fecha prevista (RN-005). La fecha
+        de préstamo es la fecha actual (RN-004). No hay límite de préstamos
+        por estudiante (RN-011). Si no se puede guardar, deshace el préstamo.
+        """
+        identificador = _obligatorio("identificador", identificador)
+        if identificador not in self.ejemplares:
+            raise EjemplarNoEncontrado(identificador)
+        if identificador in self.activos:
+            raise EjemplarNoDisponible(identificador)
+        codigo = _obligatorio("codigo", codigo)
+        nombre = _obligatorio("nombre", nombre)
+        hoy = self._reloj()
+        if fecha_prevista < hoy:
+            raise FechaPrevistaInvalida(fecha_prevista, hoy)
+
+        prestamo = Prestamo(identificador, codigo, nombre, hoy, fecha_prevista)
+        self.prestamos.append(prestamo)
+        self.activos[identificador] = prestamo
+        try:
+            self._guardar()
+        except BaseException:
+            self.prestamos.pop()
+            del self.activos[identificador]
+            raise
+        return prestamo
 
     def _guardar(self) -> None:
         self._repositorio.guardar(list(self.ejemplares.values()), self.prestamos)

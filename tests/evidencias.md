@@ -116,3 +116,26 @@ Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
 |--------|-----------|
 | TEST-001 a TEST-016 (regresión) | Pasan |
 | TEST-017 a TEST-024 | Pasan |
+
+## 2026-11-25 · TASK-006 — Servicio: registrar préstamo
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisiones del equipo antes de implementar: validar en el orden de CU-003 (ejemplar → código → nombre → fecha); identificador vacío → `CampoVacio`; código y nombre se guardan sin espacios al inicio y al final.
+
+**Ejecución 1: con las pruebas escritas y sin el método (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-024 pasan; TEST-025 a TEST-032 dan error (el método no existe).
+
+**Ejecución 2: después de implementar `registrar_prestamo` (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 32 pasan / 0 fallan
+- Control adicional: `registrar_ejemplar` es idéntico al del commit anterior (límite de la tarea).
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-024 (regresión) | Pasan |
+| TEST-025 a TEST-032 | Pasan |
+
+**Ejecución 3: TEST-027 y TEST-030 ampliados (identificador vacío y orden de validación), por decisión del equipo**
+- Comando: `python -m unittest -v`
+- Resultado: 32 pasan / 0 fallan
+- Control: en una copia temporal del código con el orden alterado (código y nombre antes que el ejemplar), TEST-030 falla en 2 subcasos. El caso de orden detecta el defecto. El código del proyecto no se modificó.

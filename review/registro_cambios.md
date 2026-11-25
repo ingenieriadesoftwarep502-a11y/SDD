@@ -24,3 +24,5 @@
 | 2026-11-25 | TASK-004 | `cargar()` valida el archivo y lanza `DatosCorruptos` sin modificarlo | src/biblioteca/repositorio.py, tests/test_repositorio_corrupto.py, tests/evidencias.md, tasks/plan_tareas.md | |
 | 2026-11-25 | TASK-004 | TEST-010 ampliado (control y caso no UTF-8); pendientes PD-1 (tildes) y PD-2 (BOM) registrados en el plan de tareas §6 | tests/test_repositorio_corrupto.py, tests/plan_pruebas.md, tests/evidencias.md, tasks/plan_tareas.md | |
 | 2026-11-25 | TASK-005 | `Biblioteca`: carga inicial, índices y `registrar_ejemplar` con reversión si falla el guardado | src/biblioteca/servicio.py, tests/test_servicio_ejemplares.py, tests/evidencias.md, tasks/plan_tareas.md | |
+| 2026-11-25 | TASK-006 | `registrar_prestamo` con validaciones RN-002…RN-005, RN-010 y reversión si falla el guardado | src/biblioteca/servicio.py, tests/test_servicio_prestamos.py, tests/evidencias.md, tasks/plan_tareas.md | |
+| 2026-11-25 | TASK-006 | TEST-027 (identificador vacío) y TEST-030 (orden de validación) ampliados por decisión del equipo | tests/test_servicio_prestamos.py, tests/plan_pruebas.md, tests/evidencias.md | |

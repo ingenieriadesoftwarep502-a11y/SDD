@@ -83,10 +83,10 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 |----|------|-----------|-----------------------|----------|--------------------|
 | TEST-025 | A | HU-004.CA1, RN-004 | D1 | Prestar E-01 a ("2024003", "Marta Ríos"), previsto 01/12/2026 | Préstamo activo con fecha de préstamo 24/11/2026; E-01 prestado; `guardar` 1 vez |
 | TEST-026 | F | HU-004.CA2, RN-002, CE-3 | D1 (E-02 prestado a 2024001) | Prestar E-02 a "2024003"; luego al mismo "2024001" | `EjemplarNoDisponible` en ambos; la cantidad de préstamos no cambia |
-| TEST-027 | F | HU-004.CA3 | D1 | Prestar "E-99" | `EjemplarNoEncontrado` |
+| TEST-027 | F | HU-004.CA3 | D1 | Prestar "E-99"; prestar con identificador "" y "   " | `EjemplarNoEncontrado`; con identificador vacío, `CampoVacio("identificador")` *(caso vacío agregado en TASK-006 por decisión del equipo)* |
 | TEST-028 | F | HU-004.CA4, RN-005 | D1 | Prestar E-01, previsto 23/11/2026 | `FechaPrevistaInvalida`; sin préstamo nuevo |
 | TEST-029 | A | HU-004.CA5, RN-005 | D1 | Prestar E-01, previsto 24/11/2026 | Se acepta (caso límite) |
-| TEST-030 | F | RN-010 | D1 | Código "" y, aparte, nombre "  " | `CampoVacio` con el campo; sin préstamo |
+| TEST-030 | F | RN-010 | D1 | Código "" y, aparte, nombre "  ". Orden: varios errores a la vez (E-99 + código vacío; E-02 + código vacío; código y nombre vacíos; nombre vacío + fecha anterior) | `CampoVacio` con el campo; sin préstamo. Con varios errores se informa el primero según CU-003: ejemplar → código → nombre → fecha *(orden agregado en TASK-006 por decisión del equipo)* |
 | TEST-031 | A | HU-004.CA7, RN-011 | D1 | Prestar E-01 y E-03 a "2024001" (que ya tiene E-02) | Ambos se aceptan; el estudiante tiene 3 préstamos activos |
 | TEST-032 | F | RNF-005 | D1; el repositorio falla al guardar | Prestar E-01 | `ErrorPersistencia`; E-01 sigue disponible; sin préstamo nuevo |
 
