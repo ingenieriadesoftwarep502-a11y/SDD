@@ -111,6 +111,30 @@ class Biblioteca:
             raise
         return prestamo
 
+    def listar_catalogo(self) -> list[tuple[Ejemplar, Prestamo | None]]:
+        """Todos los ejemplares con su préstamo activo, o None si están disponibles (HU-002, RN-009)."""
+        return [(e, self.activos.get(e.identificador)) for e in self._ordenados()]
+
+    def consultar_ejemplar(self, identificador: str) -> tuple[Ejemplar, Prestamo | None]:
+        """Un ejemplar con su préstamo activo, o None si está disponible (HU-003)."""
+        identificador = _obligatorio("identificador", identificador)
+        if identificador not in self.ejemplares:
+            raise EjemplarNoEncontrado(identificador)
+        return self.ejemplares[identificador], self.activos.get(identificador)
+
+    def listar_disponibles(self) -> list[Ejemplar]:
+        """Ejemplares sin préstamo activo (HU-006)."""
+        return [e for e in self._ordenados() if e.identificador not in self.activos]
+
+    def listar_prestados(self) -> list[tuple[Ejemplar, Prestamo]]:
+        """Ejemplares con préstamo activo, junto con ese préstamo (HU-007)."""
+        return [(e, self.activos[e.identificador])
+                for e in self._ordenados() if e.identificador in self.activos]
+
+    def _ordenados(self) -> list[Ejemplar]:
+        """Ejemplares ordenados por identificador, como texto (QP3)."""
+        return [self.ejemplares[i] for i in sorted(self.ejemplares)]
+
     def _guardar(self) -> None:
         self._repositorio.guardar(list(self.ejemplares.values()), self.prestamos)
 

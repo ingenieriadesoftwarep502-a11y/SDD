@@ -157,3 +157,23 @@ Decisión del equipo antes de implementar: identificador vacío → `CampoVacio`
 |--------|-----------|
 | TEST-001 a TEST-032 (regresión) | Pasan |
 | TEST-033 a TEST-039 | Pasan |
+
+## 2026-11-25 · TASK-008 — Servicio: consultas de catálogo y estado
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Decisiones del equipo antes de implementar: orden por identificador como texto simple; identificador vacío en la consulta → `CampoVacio`, con el caso agregado a TEST-043.
+Datos: D1 cargado con los ejemplares en orden inverso, para que las pruebas de orden detecten la falta de ordenamiento.
+
+**Ejecución 1: con las pruebas escritas y sin los métodos (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-039 pasan; TEST-040 a TEST-046 dan error (los métodos no existen).
+
+**Ejecución 2: después de implementar las cuatro consultas (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 46 pasan / 0 fallan
+- Control adicional 1: `registrar_ejemplar`, `registrar_prestamo` y `registrar_devolucion` son idénticos a los del commit anterior (límite de la tarea).
+- Control adicional 2: en una copia temporal sin ordenamiento, TEST-040 y TEST-044 fallan. Las pruebas de orden detectan el defecto.
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-039 (regresión) | Pasan |
+| TEST-040 a TEST-046 | Pasan |

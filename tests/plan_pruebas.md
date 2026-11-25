@@ -107,7 +107,7 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 | TEST-040 | A | HU-002.CA1, QP3 | D1 | `listar_catalogo()` | 3 ejemplares en orden E-01, E-02, E-03; solo E-02 tiene préstamo (P1) |
 | TEST-041 | A | HU-002.CA2, HU-006.CA2, HU-007.CA2 | D0 | Las tres consultas de listado | Listas vacías |
 | TEST-042 | A | HU-003.CA1, HU-003.CA2, CE-1 | D1 | Consultar E-01 y E-02 | E-01 sin préstamo; E-02 con P1 (2024001, Ana Pérez, 30/11/2026) |
-| TEST-043 | F | HU-003.CA3 | D1 | Consultar "E-99" | `EjemplarNoEncontrado` |
+| TEST-043 | F | HU-003.CA3 | D1 | Consultar "E-99"; consultar con identificador "" y "   " | `EjemplarNoEncontrado`; con identificador vacío, `CampoVacio("identificador")` *(caso vacío agregado en TASK-008 por decisión del equipo)* |
 | TEST-044 | A | HU-006.CA1 | D1 | `listar_disponibles()` | E-01, E-03 |
 | TEST-045 | A | HU-007.CA1 | D1 | `listar_prestados()` | Solo E-02, con P1 |
 | TEST-046 | U | Diseño §3.1 | D1 | Ejecutar las 4 consultas | `guardar` no se llamó; el estado no cambia |
