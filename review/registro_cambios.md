@@ -33,3 +33,5 @@
 | 2026-11-25 | TASK-011 | Flujo de consola CU-001 (registrar ejemplar): aviso de cancelar, identificador repetido se vuelve a pedir, confirmación | src/biblioteca/consola.py, tests/test_consola_cu001.py, tests/evidencias.md, tasks/plan_tareas.md | |
 | 2026-11-25 | TASK-012 | Flujo de consola CU-002 (consultar ejemplares): submenú 1–4 con catálogo, por identificador, disponibles y prestados | src/biblioteca/consola.py, tests/test_consola_cu002.py, tests/evidencias.md, tasks/plan_tareas.md | |
 | 2026-11-25 | TASK-012 | TEST-061 ampliado: opción inválida del submenú y aviso de cancelar una sola vez (decisión del equipo) | tests/test_consola_cu002.py, tests/plan_pruebas.md, tests/evidencias.md | |
+| 2026-11-25 | TASK-013 | Flujo de consola CU-003 (registrar préstamo): verificación del ejemplar, fecha inválida o anterior se vuelve a pedir, sin confirmación | src/biblioteca/consola.py, tests/test_consola_cu003.py, tests/evidencias.md, tasks/plan_tareas.md | |
+| 2026-11-25 | TASK-013 | TEST-066 ampliado con el caso 4a (ejemplar inexistente) por decisión del equipo | tests/test_consola_cu003.py, tests/plan_pruebas.md, tests/evidencias.md | |

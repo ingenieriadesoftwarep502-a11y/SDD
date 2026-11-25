@@ -254,3 +254,27 @@ Decisiones del equipo antes de implementar: submenú 1–4 (opción inválida se
 - Comando: `python -m unittest -v`
 - Resultado: 64 pasan / 0 fallan
 - Control: en copias temporales, TEST-061 falla si la opción inválida vuelve al menú en lugar de pedirse de nuevo, y falla si el aviso de cancelar se muestra dos veces. El código del proyecto no se modificó.
+
+## 2026-11-25 · TASK-013 — Consola: registrar préstamo (CU-003)
+Entorno: Windows 11, Python 3.14.7. Ejecutado desde la raíz del repositorio.
+Implementación explicada antes de aplicarla: el ejemplar se verifica con `consultar_ejemplar` antes de pedir el código (CU-003 4a/4b); si `registrar_prestamo` responde `FechaPrevistaInvalida`, se vuelve a pedir solo la fecha (11b). Sin confirmación (QP4) y sin modificar `servicio.py`.
+
+**Ejecución 1: con las pruebas escritas y sin el flujo (debe fallar)**
+- Comando: `python -m unittest -v`
+- Resultado: TEST-001 a TEST-064 pasan; TEST-065 a TEST-070 fallan (`failures=6`): la opción 3 aún mostraba "no disponible".
+
+**Ejecución 2: después de implementar el flujo (suite completa)**
+- Comando: `python -m unittest -v`
+- Resultado: 70 pasan / 0 fallan
+- Control adicional 1: `servicio.py` y los demás métodos de la consola sin cambios (límite de la tarea).
+- Control adicional 2: en una copia temporal con una confirmación agregada antes de registrar, TEST-070 falla. La prueba protege la decisión QP4.
+
+| Prueba | Resultado |
+|--------|-----------|
+| TEST-001 a TEST-064 (regresión) | Pasan |
+| TEST-065 a TEST-070 | Pasan |
+
+**Ejecución 3: TEST-066 ampliado con el caso 4a (ejemplar inexistente), por decisión del equipo**
+- Comando: `python -m unittest -v`
+- Resultado: 70 pasan / 0 fallan
+- Control: en una copia temporal donde el caso 4a vuelve al menú en lugar de pedir de nuevo el identificador, TEST-066 falla. El código del proyecto no se modificó.

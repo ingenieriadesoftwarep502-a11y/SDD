@@ -150,7 +150,7 @@ Para todas: el archivo se prepara a mano, se ejecuta `cargar()`, se espera `Dato
 | ID | Tipo | Requisito | Condiciones iniciales | Entradas | Resultado esperado |
 |----|------|-----------|-----------------------|----------|--------------------|
 | TEST-065 | A | CU-003, HU-004.CA1 | D1 | "E-01", "2024003", "Marta Ríos", "01/12/2026" | Muestra "Cálculo I" y "Stewart" después del identificador; préstamo creado; confirmación |
-| TEST-066 | F | CU-003 4b, HU-004.CA2 | D1 | "E-02", luego "E-01", … | Mensaje "ya está prestado"; vuelve a pedir el identificador |
+| TEST-066 | F | CU-003 4a, 4b, HU-004.CA2 | D1 | "E-02", luego "E-01", …; aparte, "E-99", luego "E-01", … | Mensaje "ya está prestado"; vuelve a pedir el identificador. Con E-99: mensaje "no está registrado" y vuelve a pedirlo *(caso 4a agregado en TASK-013 por decisión del equipo)* |
 | TEST-067 | F | CU-003 11a, HU-004.CA6 | D1 | …, "31/02/2026", "01/12/2026" | Muestra "DD/MM/AAAA" y vuelve a pedir la fecha; préstamo creado |
 | TEST-068 | F | CU-003 11b, HU-004.CA4 | D1 | …, "23/11/2026", "24/11/2026" | Mensaje de fecha anterior y vuelve a pedirla; préstamo creado |
 | TEST-069 | F | RC-1 | D1 | "E-01", "2024003", "Marta Ríos", "cancelar" | Sin préstamo; E-01 disponible |

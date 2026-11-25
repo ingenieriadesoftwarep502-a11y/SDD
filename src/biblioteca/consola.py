@@ -78,7 +78,7 @@ class Consola:
         self._opciones = {
             "1": ("Registrar ejemplar", self._registrar_ejemplar),
             "2": ("Consultar ejemplares", self._consultar_ejemplares),
-            "3": ("Registrar préstamo", self._no_disponible),
+            "3": ("Registrar préstamo", self._registrar_prestamo),
             "4": ("Registrar devolución", self._no_disponible),
             "5": ("Préstamos vencidos", self._no_disponible),
         }
@@ -210,6 +210,39 @@ class Consola:
                 f"{prestamo.codigo_estudiante} {prestamo.nombre_estudiante} | "
                 f"prestado el {formatear_fecha(prestamo.fecha_prestamo)} | "
                 f"devolución prevista: {formatear_fecha(prestamo.fecha_prevista)}")
+
+    def _registrar_prestamo(self) -> None:
+        """CU-003: identificador → código → nombre → fecha prevista; registra y confirma.
+
+        No pide confirmación (QP4 rechazada).
+        """
+        self._salida(AVISO_CANCELAR)
+        while True:
+            identificador = self.pedir_texto("Identificador del ejemplar")
+            try:
+                ejemplar, prestamo_activo = self._biblioteca.consultar_ejemplar(identificador)
+            except EjemplarNoEncontrado as error:  # CU-003 4a
+                self._salida(mensaje_error(error))
+                continue
+            if prestamo_activo is not None:  # CU-003 4b
+                self._salida(mensaje_error(EjemplarNoDisponible(identificador)))
+                continue
+            break
+        self._salida(f"Ejemplar: «{ejemplar.titulo}», de {ejemplar.autor}.")
+        codigo = self.pedir_texto("Código del estudiante")
+        nombre = self.pedir_texto("Nombre del estudiante")
+        while True:
+            fecha_prevista = self.pedir_fecha("Fecha prevista de devolución")
+            try:
+                prestamo = self._biblioteca.registrar_prestamo(
+                    identificador, codigo, nombre, fecha_prevista)
+                break
+            except FechaPrevistaInvalida as error:  # CU-003 11b
+                self._salida(mensaje_error(error))
+        self._salida(
+            f"Préstamo registrado: {prestamo.identificador_ejemplar} a "
+            f"{prestamo.codigo_estudiante} {prestamo.nombre_estudiante}, "
+            f"devolución prevista: {formatear_fecha(prestamo.fecha_prevista)}.")
 
     def _no_disponible(self) -> None:
         self._salida("Opción no disponible todavía.")
