@@ -50,6 +50,8 @@ permite pasar a la fase siguiente.
 | 4. Diseño técnico | `docs/04_diseno_tecnico.md` | APROBADO |
 | 5. Tareas | `tasks/plan_tareas.md` | APROBADO |
 | 6. Pruebas | `tests/plan_pruebas.md` | APROBADO |
-| 7. Implementación | `src/`, `tests/` | Pendiente |
-| 8. Revisión | `review/revision_final.md`, `ops/guia_ejecucion.md` | Pendiente |
-| 9. Mantenimiento | `ops/solicitudes_cambio.md` | Pendiente |
+| 7. Implementación | `src/`, `tests/`, `tests/evidencias.md` | APROBADO (TASK-001 a TASK-016 verificadas) |
+| 8. Revisión | `review/revision_final.md`, `ops/guia_ejecucion.md` | Fuera del alcance de la entrega |
+| 9. Mantenimiento | `ops/solicitudes_cambio.md` | Fuera del alcance de la entrega |
+
+> El equipo definió que la entrega termina en la Actividad 7 (2026-11-26). Las Actividades 8 y 9 no forman parte de este trabajo.

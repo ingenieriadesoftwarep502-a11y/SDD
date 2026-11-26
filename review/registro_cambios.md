@@ -40,3 +40,4 @@
 | 2026-11-25 | TASK-015 | `__main__.py`: `python -m biblioteca [RUTA]`, datos dañados o ilegibles → código 1, argumentos de más → código 2, cierre ordenado con Ctrl+C/EOF; PD-1 ampliado tras el recorrido de humo | src/biblioteca/__main__.py, tests/test_integracion.py, tests/evidencias.md, tasks/plan_tareas.md | |
 | 2026-11-25 | TASK-015 | TEST-076 (permisos, argumentos de más) y TEST-077 (Ctrl+C, mensaje de cierre) ampliados por decisión del equipo; PD-1 se mantiene para TEST-079 | tests/test_integracion.py, tests/plan_pruebas.md, tests/evidencias.md | |
 | 2026-11-25 | TASK-016 | TEST-081: rendimiento con 5.000 ejemplares y 20.000 préstamos; consultas < 0.002 s, carga 0.27 s, guardado 0.54 s | tests/test_rendimiento.py, tests/evidencias.md, tasks/plan_tareas.md | |
+| 2026-11-26 | Cierre | README: Actividad 7 aprobada, Actividades 8 y 9 fuera del alcance; matriz de trazabilidad con componentes reales y estado final | README.md, docs/trazabilidad.md | |
